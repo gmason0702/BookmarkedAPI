@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using BookmarkedAPI.Providers;
 using BookmarkedAPI.Models;
+using BookmarkedAPI.Data;
 
 namespace BookmarkedAPI
 {

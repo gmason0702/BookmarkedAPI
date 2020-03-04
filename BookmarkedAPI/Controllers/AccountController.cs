@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using BookmarkedAPI.Models;
 using BookmarkedAPI.Providers;
 using BookmarkedAPI.Results;
+using BookmarkedAPI.Data;
 
 namespace BookmarkedAPI.Controllers
 {

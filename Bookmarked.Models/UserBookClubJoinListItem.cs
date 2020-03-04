@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookmarked.Services
+namespace Bookmarked.Models
 {
-    public class Class1
+    public class UserBookClubJoinListItem
     {
     }
 }
