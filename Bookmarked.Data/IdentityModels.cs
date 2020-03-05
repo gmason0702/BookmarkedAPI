@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Bookmarked.Data;
@@ -18,6 +20,8 @@ namespace BookmarkedAPI.Data
             // Add custom user claims here
             return userIdentity;
         }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -31,7 +35,43 @@ namespace BookmarkedAPI.Data
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Book> Book { get; set; }
+        public DbSet<BookClub> BookClub { get; set; }
+        public DbSet<UserBookClubJoin> UserBookClubJoin { get; set; }
+        public DbSet<UserBookJoin> UserBookJoin { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUser { get; set; }//Not sure if this is needed//commenting out for now,
+        //this dbset might live somewhere else -it's actually right above - "public class ApplicaitonDbContext:IdentityDbContext<ApplicationUser>"
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Conventions
+                .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder
+                .Configurations
+                .Add(new IdentityUserLoginConfiguration())
+                .Add(new IdentityUserRoleConfiguration());
+        }
+
+    }
+    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+    {
+        public IdentityUserLoginConfiguration()
+        {
+            HasKey(iul => iul.UserId);
+        }
+
+    }
+    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+    {
+        public IdentityUserRoleConfiguration()
+        {
+            HasKey(iur => iur.UserId);
+        }
+
         public DbSet<Book> Books { get; set; }
         public DbSet<UserBookClubJoin> UserBookClubJoins { get; set; }
+
     }
 }
