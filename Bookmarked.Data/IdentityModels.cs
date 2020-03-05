@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -35,6 +35,7 @@ namespace BookmarkedAPI.Data
         {
             return new ApplicationDbContext();
         }
+
         public DbSet<Book> Book { get; set; }
         public DbSet<BookClub> BookClub { get; set; }
         public DbSet<UserBookClubJoin> UserBookClubJoin { get; set; }
@@ -68,5 +69,9 @@ namespace BookmarkedAPI.Data
         {
             HasKey(iur => iur.UserId);
         }
+
+        public DbSet<Book> Books { get; set; }
+        public DbSet<UserBookClubJoin> UserBookClubJoins { get; set; }
+
     }
 }
