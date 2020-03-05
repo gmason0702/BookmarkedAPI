@@ -8,5 +8,8 @@ namespace Bookmarked.Models
 {
     public class BookClubDetail
     {
+        public int BookClubId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Bookmarked.Data;
 using Bookmarked.Models;
+using BookmarkedAPI.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,54 @@ namespace Bookmarked.Services
             var entity =
                 new BookClub()
                 {
+                    BookClubId = _userId,
+                    Name = model.Name,
+                    Description = model.Description,
+                    ReaderList = model.ReaderList
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Notes.Add(entity);
+                ctx.BookClubs.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+        public IEnumerable<BookClubListItem> GetBookClubs()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .BookClubs
+                        .Where(e => e.BookClubId == _userId)
+                        .Select(
+                            e =>
+                                new BookClubListItem
+                                {
+                                    BookClubId = e.BookClubId,
+                                    Name = e.Name,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public BookClubDetail GetBookClubById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .BookClubs
+                        .Single(e => e.BookClubId == id && e.BookClubId == _userId);
+                return
+                    new BookClubDetail
+                    {
+                        BookClubId = entity.BookClubId,
+                        Name = entity.Name,
+                        Description = entity.Description,
+                    };
             }
         }
     }
