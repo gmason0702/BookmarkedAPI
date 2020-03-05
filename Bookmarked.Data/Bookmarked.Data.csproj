@@ -87,6 +87,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookClub.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
     <Compile Include="UserBookJoin.cs" />
