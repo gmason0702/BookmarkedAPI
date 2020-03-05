@@ -1,5 +1,7 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Bookmarked.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -29,5 +31,7 @@ namespace BookmarkedAPI.Data
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<UserBookClubJoin> UserBookClubJoins { get; set; }
     }
 }
