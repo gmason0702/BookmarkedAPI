@@ -64,5 +64,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bookmarked.Data\Bookmarked.Data.csproj">
+      <Project>{9F169C8E-263B-4DCB-B2DB-B4414F35B74D}</Project>
+      <Name>Bookmarked.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bookmarked.Models\Bookmarked.Models.csproj">
+      <Project>{2C79CF82-C25E-4E6C-BED1-4740D66BF55A}</Project>
+      <Name>Bookmarked.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
