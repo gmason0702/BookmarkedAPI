@@ -23,7 +23,7 @@ namespace BookmarkedAPI.Data
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<UserBookJoin> UserBookJoins { get; set; }
+        public virtual ICollection<UserBookJoin> UserBookJoins { get; set; }
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
     }
 
