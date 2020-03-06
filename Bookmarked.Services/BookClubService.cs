@@ -11,8 +11,8 @@ namespace Bookmarked.Services
 {
     public class BookClubService
     {
-        private readonly int _userId;
-        public BookClubService(int userId)
+        private readonly Guid _userId;
+        public BookClubService(Guid userId)
         {
             _userId = userId;
         }
@@ -22,6 +22,7 @@ namespace Bookmarked.Services
                 new BookClub()
                 {
                     Name = model.Name,
+                    OwnerId = _userId,
                     Description = model.Description,
                     CreatedUtc = DateTimeOffset.Now
                 };
@@ -39,7 +40,7 @@ namespace Bookmarked.Services
                 var query =
                     ctx
                         .BookClubs
-                        .Where(e => e.BookClubId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new BookClubListItem
@@ -60,7 +61,7 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                         .BookClubs
-                        .Single(e => e.BookClubId == id && e.BookClubId == _userId);
+                        .Single(e => e.BookClubId == id);
                 return
                     new BookClubDetail
                     {

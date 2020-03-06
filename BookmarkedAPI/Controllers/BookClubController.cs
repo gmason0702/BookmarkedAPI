@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace BookmarkedAPI.Controllers
 {
+    [Authorize]
     public class BookClubController : ApiController
     {
         public IHttpActionResult Get()
@@ -38,7 +39,7 @@ namespace BookmarkedAPI.Controllers
         }
         private BookClubService CreateBookClubService()
         {
-            var userId = Convert.ToInt32(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var bookClubService = new BookClubService(userId);
             return bookClubService;
         }

@@ -95,6 +95,22 @@
     <Compile Include="Migrations\202003061331099_thirdmigration.Designer.cs">
       <DependentUpon>202003061331099_thirdmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003061540564_ConfigurationTest.cs" />
+    <Compile Include="Migrations\202003061540564_ConfigurationTest.Designer.cs">
+      <DependentUpon>202003061540564_ConfigurationTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003061635213_ConfigurationTestWithUsers.cs" />
+    <Compile Include="Migrations\202003061635213_ConfigurationTestWithUsers.Designer.cs">
+      <DependentUpon>202003061635213_ConfigurationTestWithUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003061718206_UpdatedGuidTypes.cs" />
+    <Compile Include="Migrations\202003061718206_UpdatedGuidTypes.Designer.cs">
+      <DependentUpon>202003061718206_UpdatedGuidTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003061727002_MoreGuidUpdates.cs" />
+    <Compile Include="Migrations\202003061727002_MoreGuidUpdates.Designer.cs">
+      <DependentUpon>202003061727002_MoreGuidUpdates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -110,6 +126,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003061331099_thirdmigration.resx">
       <DependentUpon>202003061331099_thirdmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061540564_ConfigurationTest.resx">
+      <DependentUpon>202003061540564_ConfigurationTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061635213_ConfigurationTestWithUsers.resx">
+      <DependentUpon>202003061635213_ConfigurationTestWithUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061718206_UpdatedGuidTypes.resx">
+      <DependentUpon>202003061718206_UpdatedGuidTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061727002_MoreGuidUpdates.resx">
+      <DependentUpon>202003061727002_MoreGuidUpdates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
