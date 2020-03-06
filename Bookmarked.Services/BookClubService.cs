@@ -21,10 +21,9 @@ namespace Bookmarked.Services
             var entity =
                 new BookClub()
                 {
-                    BookClubId = _userId,
                     Name = model.Name,
                     Description = model.Description,
-                    ReaderList = model.ReaderList
+                    CreatedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
