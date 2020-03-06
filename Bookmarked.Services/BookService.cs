@@ -23,7 +23,7 @@ namespace Bookmarked.Services
                 new Book()
                 {
                     OwnerId=_userId,
-                    Name = model.Name,
+                    Title = model.Title,
                     Author = model.Author,
                     Genre = model.Genre,
                     CreatedUtc = DateTimeOffset.Now
@@ -47,7 +47,7 @@ namespace Bookmarked.Services
                         new BookListItem
                         {
                             Id = e.Id,
-                            Name = e.Name,
+                            Title = e.Title,
                             Author = e.Author,
                             UserBookJoins = e.UserBookJoins
 
@@ -56,19 +56,19 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
-        public BookDetail GetBookByName(string name)
+        public BookDetail GetBookByName(string title)
         {
             using (var ctx= new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Books
-                        .Single(e => e.Name == name && e.OwnerId==_userId);
+                        .Single(e => e.Title == title && e.OwnerId==_userId);
                 return
                     new BookDetail
                     {
                         Id = entity.Id,
-                        Name = entity.Name,
+                        Title = entity.Title,
                         Author = entity.Author,
                         Genre = entity.Genre,
                         CreatedUtc = entity.CreatedUtc,
@@ -89,7 +89,7 @@ namespace Bookmarked.Services
                     new BookDetail
                     {
                         Id = entity.Id,
-                        Name = entity.Name,
+                        Title = entity.Title,
                         Author = entity.Author,
                         Genre = entity.Genre,
                         CreatedUtc = entity.CreatedUtc,
@@ -106,7 +106,7 @@ namespace Bookmarked.Services
                     ctx
                         .Books
                         .Single(e => e.Id == model.Id && e.OwnerId==_userId);
-                entity.Name = model.Name;
+                entity.Title = model.Title;
                 entity.Author = model.Author;
                 entity.Genre = model.Genre;
                 entity.CreatedUtc = DateTimeOffset.UtcNow;

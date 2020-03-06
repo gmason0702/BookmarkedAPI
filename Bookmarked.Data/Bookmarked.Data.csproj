@@ -87,6 +87,15 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookClub.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202003061540194_InitialCreate.cs" />
+    <Compile Include="Migrations\202003061540194_InitialCreate.Designer.cs">
+      <DependentUpon>202003061540194_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003061611073_NameToTitleMigration.cs" />
+    <Compile Include="Migrations\202003061611073_NameToTitleMigration.Designer.cs">
+      <DependentUpon>202003061611073_NameToTitleMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
     <Compile Include="UserBookJoin.cs" />
@@ -94,6 +103,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003061540194_InitialCreate.resx">
+      <DependentUpon>202003061540194_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061611073_NameToTitleMigration.resx">
+      <DependentUpon>202003061611073_NameToTitleMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
