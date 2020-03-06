@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202003051948544_SecondMigration.Designer.cs">
       <DependentUpon>202003051948544_SecondMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003061331099_thirdmigration.cs" />
+    <Compile Include="Migrations\202003061331099_thirdmigration.Designer.cs">
+      <DependentUpon>202003061331099_thirdmigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -103,6 +107,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003051948544_SecondMigration.resx">
       <DependentUpon>202003051948544_SecondMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061331099_thirdmigration.resx">
+      <DependentUpon>202003061331099_thirdmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

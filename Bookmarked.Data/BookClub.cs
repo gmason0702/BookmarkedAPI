@@ -17,7 +17,6 @@ namespace Bookmarked.Data
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        [Required]
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
