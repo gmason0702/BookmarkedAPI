@@ -11,8 +11,8 @@ namespace Bookmarked.Services
 {
     public class BookService
     {
-        private readonly int _userId;
-        public BookService(int userId)
+        private readonly Guid _userId;
+        public BookService(Guid userId)
         {
             _userId = userId;
         }
@@ -21,6 +21,7 @@ namespace Bookmarked.Services
             var entity =
                 new Book()
                 {
+                    OwnerId=_userId,
                     Name = model.Name,
                     Author = model.Author,
                     Genre = model.Genre,
@@ -39,7 +40,7 @@ namespace Bookmarked.Services
                 var query =
                     ctx
                     .Books
-                    .Where(e => e.Id == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                         new BookListItem
@@ -61,7 +62,7 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                         .Books
-                        .Single(e => e.Name == name);
+                        .Single(e => e.Name == name && e.OwnerId==_userId);
                 return
                     new BookDetail
                     {
@@ -82,7 +83,7 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.Genre == genre);
+                    .Single(e => e.Genre == genre && e.OwnerId==_userId);
                 return
                     new BookDetail
                     {
@@ -94,6 +95,35 @@ namespace Bookmarked.Services
                         PublishedDate = entity.PublishedDate,
                         UserBookJoins = entity.UserBookJoins
                     };
+            }
+        }
+        public bool UpdateBook(BookEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Books
+                        .Single(e => e.Id == model.Id && e.OwnerId==_userId);
+                entity.Name = model.Name;
+                entity.Author = model.Author;
+                entity.Genre = model.Genre;
+                entity.CreatedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteBook(int Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Books
+                        .Single(e => e.Id == Id && e.OwnerId==_userId);
+                ctx.Books.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

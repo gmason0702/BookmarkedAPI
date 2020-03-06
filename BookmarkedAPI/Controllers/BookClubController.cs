@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace BookmarkedAPI.Controllers
 {
+    [Authorize]
     public class BookClubController : ApiController
     {
         public IHttpActionResult Get()

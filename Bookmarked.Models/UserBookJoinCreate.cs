@@ -15,6 +15,9 @@ namespace Bookmarked.Models
         public ApplicationUser Reader { get; set; }
         public Book Book { get; set; }
 
+        [Range(1,5)]
+        public int Rating { get; set; }
+
 
     }
 }

@@ -7,13 +7,13 @@ namespace Bookmarked.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class SecondMigration : IMigrationMetadata
+    public sealed partial class ThirdMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SecondMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ThirdMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003051948544_SecondMigration"; }
+            get { return "202003061502573_ThirdMigration"; }
         }
         
         string IMigrationMetadata.Source

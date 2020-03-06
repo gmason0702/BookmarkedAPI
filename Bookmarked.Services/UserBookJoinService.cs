@@ -24,6 +24,7 @@ namespace Bookmarked.Services
                 Id = _id,
                 Book= model.Book,
                 Reader = model.Reader,
+                Rating=model.Rating,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
             using (var ctx = new ApplicationDbContext())
