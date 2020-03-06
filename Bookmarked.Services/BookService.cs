@@ -11,6 +11,7 @@ namespace Bookmarked.Services
 {
     public class BookService
     {
+
         private readonly Guid _userId;
         public BookService(Guid userId)
         {
