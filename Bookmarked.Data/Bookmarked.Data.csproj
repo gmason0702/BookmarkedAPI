@@ -87,10 +87,6 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookClub.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202003052144320_SecondMigration.cs" />
-    <Compile Include="Migrations\202003052144320_SecondMigration.Designer.cs">
-      <DependentUpon>202003052144320_SecondMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202003061502573_ThirdMigration.cs" />
     <Compile Include="Migrations\202003061502573_ThirdMigration.Designer.cs">
       <DependentUpon>202003061502573_ThirdMigration.cs</DependentUpon>
@@ -105,9 +101,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003052144320_SecondMigration.resx">
-      <DependentUpon>202003052144320_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003061502573_ThirdMigration.resx">
       <DependentUpon>202003061502573_ThirdMigration.cs</DependentUpon>
     </EmbeddedResource>
