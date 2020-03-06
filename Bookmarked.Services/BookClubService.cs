@@ -24,7 +24,6 @@ namespace Bookmarked.Services
                     BookClubId = _userId,
                     Name = model.Name,
                     Description = model.Description,
-                    ReaderList = model.ReaderList
                 };
 
             using (var ctx = new ApplicationDbContext())
