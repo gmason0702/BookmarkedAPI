@@ -97,5 +97,34 @@ namespace Bookmarked.Services
                     };
             }
         }
+        public bool UpdateBook(BookEdit model)
+        {
+            using (var ctx=new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Id == model.Id);
+                entity.Name = model.Name;
+                entity.Author = model.Author;
+                entity.Genre = model.Genre;
+                entity.PublishedDate = model.PublishedDate;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteBook(int bookId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Id == bookId);
+                ctx.Books.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }
