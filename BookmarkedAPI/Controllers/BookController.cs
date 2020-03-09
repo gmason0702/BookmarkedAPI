@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace BookmarkedAPI.Controllers
 {
+    [Authorize]
     public class BookController : ApiController
     {
         public IHttpActionResult Get()
@@ -44,11 +45,31 @@ namespace BookmarkedAPI.Controllers
             return Ok();
         }
 
+        public IHttpActionResult Put(BookEdit book)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var service = CreateBookService();
+
+            if (!service.UpdateBook(book))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int bookId)
+        {
+            var service = CreateBookService();
+            if (!service.DeleteBook(bookId))
+                return InternalServerError();
+
+            return Ok();
+        }
 
         private BookService CreateBookService()
         {
-            var userId = Convert.ToInt32(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var bookService = new BookService(userId);
             return bookService;
         }

@@ -58,6 +58,7 @@
     <Compile Include="BookClubListItem.cs" />
     <Compile Include="BookCreate.cs" />
     <Compile Include="BookDetail.cs" />
+    <Compile Include="BookEdit.cs" />
     <Compile Include="BookListItem.cs" />
     <Compile Include="BookClubCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
