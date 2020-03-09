@@ -1,4 +1,4 @@
-﻿using Bookmarked.Models;
+using Bookmarked.Models;
 using Bookmarked.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -34,7 +34,6 @@ namespace BookmarkedAPI.Controllers
         }
         private UserBookJoinService CreateUserBookJoinService()
         {
-          
             var userId = Guid.Parse(User.Identity.GetUserId());
             var userBookService = new UserBookJoinService(userId);
             return userBookService;

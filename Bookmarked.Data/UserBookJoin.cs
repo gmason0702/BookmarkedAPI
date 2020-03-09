@@ -1,4 +1,4 @@
-﻿using BookmarkedAPI.Data;
+using BookmarkedAPI.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,8 +12,7 @@ namespace Bookmarked.Data
     public class UserBookJoin
     {       
         [Key]
-        public int Id { get; set; }
-        
+        public int Id { get; set; }      
         public string UserName { get; set; }
         public Guid OwnerId { get; set; }
         public string ReaderId { get; set; }
