@@ -17,6 +17,8 @@ using BookmarkedAPI.Models;
 using BookmarkedAPI.Providers;
 using BookmarkedAPI.Results;
 using BookmarkedAPI.Data;
+using Bookmarked.Services;
+using System.Linq;
 
 namespace BookmarkedAPI.Controllers
 {
@@ -58,10 +60,13 @@ namespace BookmarkedAPI.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            var ctx = new ApplicationDbContext();
 
             return new UserInfoViewModel
             {
+
                 Email = User.Identity.GetUserName(),
+                //Book = ctx.Users.Single(e=>e.UserBookJoins.
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
@@ -126,7 +131,7 @@ namespace BookmarkedAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +264,9 @@ namespace BookmarkedAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -369,7 +374,7 @@ namespace BookmarkedAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

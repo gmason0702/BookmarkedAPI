@@ -9,47 +9,45 @@ using System.Threading.Tasks;
 
 namespace Bookmarked.Services
 {
-    public class UserBookJoinService
+    public class BookClubBookJoinService
     {
         private readonly Guid _userId;
-        public UserBookJoinService(Guid userId)
+        public BookClubBookJoinService(Guid id)
         {
-            _userId = userId;
+            _userId = id;
         }
-        public bool CreateUserBookJoin(UserBookJoinCreate model)
+
+        public bool CreateBookClubBookJoin(BookClubBookJoinCreate model)
         {
             var ctx = new ApplicationDbContext();
+            int bookClubId = ctx.BookClubs.Single(e => e.Name == model.BookClubName).BookClubId;
             int bookId = ctx.Books.Single(e => e.Name == model.BookName).Id;
-            string userId = ctx.Users.Single(e => e.UserName == model.UserName).Id;
-            var entity = new UserBookJoin()
+            var entity = new BookClubBookJoin()
             {
-
-                ReaderId=userId,
                 OwnerId = _userId,
-                BookId = bookId,
-                Rating=model.Rating,
-                CreatedUtc = DateTimeOffset.UtcNow
+                BookClubId = bookClubId,
+                BookId=bookId,
+                BookClubName = model.BookClubName,
             };
             using (ctx)
             {
-                ctx.UserBookJoins.Add(entity);
+                ctx.BookClubBookJoins.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserBookListItem> GetUserBook()
+        public IEnumerable<BookClubBookListItem> GetBookClubBook()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
-                    .UserBookJoins
+                    .BookClubBookJoins
                     .Where(e => e.OwnerId == _userId)
-                    .Select(e => new UserBookListItem
+                    .Select(e => new BookClubBookListItem
                     {
-                        Id = e.Id,
-                        ReaderId=e.ReaderId,
                         BookId = e.BookId,
-                        Rating=e.Rating
+                        BookClubId = e.BookClubId
                     }
+
                         );
                 return query.ToArray();
             }

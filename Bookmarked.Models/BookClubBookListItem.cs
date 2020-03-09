@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bookmarked.Models
 {
-    public class UserBookClubJoinListItem
+    public class BookClubBookListItem
     {
-
-        public int Id { get; set; }
-        public string ReaderId { get; set; }
+        public int BookId { get; set; }
+        public int BookClubId { get; set; }
     }
 }
