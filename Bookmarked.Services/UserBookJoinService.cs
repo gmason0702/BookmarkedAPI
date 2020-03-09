@@ -46,7 +46,8 @@ namespace Bookmarked.Services
                     {
                         Id = e.Id,
                         ReaderId = e.ReaderId,
-                        BookId = e.BookId
+                        BookId = e.BookId,
+                        Rating = e.Rating
                     }
 
                         );
