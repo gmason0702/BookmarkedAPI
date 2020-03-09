@@ -1,4 +1,4 @@
-﻿using Bookmarked.Data;
+using Bookmarked.Data;
 using BookmarkedAPI.Data;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace Bookmarked.Models
     {
         [Required]
         public string UserName { get; set; }
+        public string ReaderUserName { get; set; }
         public string BookName { get; set; }
         public int Rating { get; set; }
     }

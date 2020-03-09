@@ -1,4 +1,4 @@
-﻿using Bookmarked.Data;
+using Bookmarked.Data;
 using Bookmarked.Models;
 using BookmarkedAPI.Data;
 using System;
@@ -15,6 +15,9 @@ namespace Bookmarked.Services
         public UserBookJoinService(Guid userId)
         {
             _userId = userId;
+        public UserBookJoinService(Guid id)
+        {
+            _userId = id;
         }
         public bool CreateUserBookJoin(UserBookJoinCreate model)
         {
@@ -24,6 +27,12 @@ namespace Bookmarked.Services
             var entity = new UserBookJoin()
             {
 
+
+                UserName=model.UserName,
+
+            string userId = ctx.Users.Single(e => e.UserName == model.ReaderUserName).Id;
+            var entity = new UserBookJoin()
+            {
                 ReaderId=userId,
                 OwnerId = _userId,
                 BookId = bookId,
@@ -46,9 +55,16 @@ namespace Bookmarked.Services
                     .Select(e => new UserBookListItem
                     {
                         Id = e.Id,
+
                         ReaderId=e.ReaderId,
                         BookId = e.BookId,
                         Rating=e.Rating
+                        ReaderId = e.ReaderId,
+                        BookId = e.BookId,
+                        Rating = e.Rating
+
+                        //Username=e.UserName,
+                        BookId = e.BookId
                     }
                         );
                 return query.ToArray();

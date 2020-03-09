@@ -28,8 +28,8 @@ namespace Bookmarked.Data.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-          
-            
+
+
             //The UserStore is ASP Identity's data layer. Wrap context with the UserStore.
             UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(context);
 
@@ -38,10 +38,11 @@ namespace Bookmarked.Data.Migrations
             UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(userStore);
 
             //Add or Update the initial Users into the database as normal.
+
             context.Users.AddOrUpdate(
                 x => x.Email,  //Using Email as the Unique Key: If a record exists with the same email, AddOrUpdate skips it.
-                new ApplicationUser() { FirstName = "Damon",LastName="Bailey",Email = "damo2@email.co.uk", UserName = "damo2@email.co.uk", PasswordHash = new PasswordHasher().HashPassword("Som3Pass!") },
-                new ApplicationUser() { FirstName = "Karen", LastName = "Bailey", Email = "2ndUser@email.co.uk", UserName = "2ndUser@email.co.uk", PasswordHash = new PasswordHasher().HashPassword("MyPassword") }
+                new ApplicationUser() { Id= Guid.NewGuid().ToString(), FirstName = "Damon", LastName = "Bailey", Email = "damo2@email.co.uk", UserName = "damo2@email.co.uk", PasswordHash = new PasswordHasher().HashPassword("Som3Pass!") },
+                new ApplicationUser() { Id= Guid.NewGuid().ToString(), FirstName = "Karen", LastName = "Bailey", Email = "2ndUser@email.co.uk", UserName = "2ndUser@email.co.uk", PasswordHash = new PasswordHasher().HashPassword("MyPassword") }
             );
 
             //Save changes so the Id columns will auto-populate.
@@ -61,14 +62,32 @@ namespace Bookmarked.Data.Migrations
 
 
             context.Books.AddOrUpdate(x => x.Name,
-            new Book() { Name = "The Great Gatsby", Author = "F Scott Fitzgerald", Genre = "Mystery",CreatedUtc=DateTimeOffset.Now },
+            new Book() { Name = "The Great Gatsby", Author = "F Scott Fitzgerald", Genre = "Mystery", CreatedUtc = DateTimeOffset.Now },
             new Book() { Name = "Huckleberry Finn", Author = "Mark Twain", Genre = "Adventure", CreatedUtc = DateTimeOffset.Now },
             new Book() { Name = "The Catcher in the Rye", Author = "J D Salinger", Genre = "Adult", CreatedUtc = DateTimeOffset.Now }
             );
 
-            context.UserBookJoins.AddOrUpdate(x => x.ReaderId,
-            new UserBookJoin() { ReaderId = "1c0b8895-6943-4732-9200-0ee0a3db7064", BookId = 3, Rating = 5, CreatedUtc = DateTimeOffset.Now });
+            context.BookClubs.AddOrUpdate(x => x.Name,
+            new BookClub() { Name = "Mystery Club", Description = "We love mystery novels.", CreatedUtc = DateTimeOffset.Now });
 
+            context.SaveChanges();
+
+            context.UserBookJoins.AddOrUpdate(x => x.ReaderId,
+            new UserBookJoin()
+            {
+                ReaderId = context.Users.Single(e=>e.UserName== "damo2@email.co.uk").Id,
+                BookId = context.Books.Single(e=>e.Name=="The Great Gatsby").Id,
+                Rating = 5,
+                CreatedUtc = DateTimeOffset.Now
+            });
+
+            context.UserBookClubJoins.AddOrUpdate(x => x.BookClubId,
+            new UserBookClubJoin()
+            {
+                 ReaderId=context.Users.Single(e=>e.UserName== "2ndUser@email.co.uk").Id,
+                 BookClubId=context.BookClubs.Single(e=>e.Name=="Mystery Club").BookClubId,
+                 CreatedUtc=DateTimeOffset.Now
+            });
         }
     }
 }
