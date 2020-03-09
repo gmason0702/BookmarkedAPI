@@ -13,11 +13,14 @@ namespace Bookmarked.Data
     {
      [Key]   
         public int Id { get; set; }
-        
+        public Guid OwnerId { get; set; }
+
         public string ReaderId { get; set; }
         [ForeignKey("ReaderId")]
         //navigation property-return type is the class that the Foreign key is relating to         
         public virtual ApplicationUser Reader { get; set; }
+        public string UserName { get; set; }
+        public string BookClubName { get; set; }
         public int BookClubId { get; set; }
         [ForeignKey("BookClubId")]
         public virtual BookClub Club { get; set; }

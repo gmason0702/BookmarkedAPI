@@ -12,8 +12,9 @@ namespace Bookmarked.Models
     public class UserBookJoinCreate
     {
         [Required]
-        public ApplicationUser Reader { get; set; }
-        public Book Book { get; set; }
+        public string UserName { get; set; }
+        public string BookName { get; set; }
+        public int Rating { get; set; }
 
 
     }

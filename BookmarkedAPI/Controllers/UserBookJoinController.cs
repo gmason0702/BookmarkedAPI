@@ -34,7 +34,7 @@ namespace BookmarkedAPI.Controllers
         }
         private UserBookJoinService CreateUserBookJoinService()
         {
-            var Id = int.Parse(User.Identity.GetUserId());
+            var Id = Guid.Parse(User.Identity.GetUserId());
             var noteService = new UserBookJoinService(Id);
             return noteService;
         }

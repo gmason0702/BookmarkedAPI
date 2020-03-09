@@ -12,19 +12,20 @@ namespace Bookmarked.Services
     public class UserBookClubJoinService
     {
 
-        private readonly int _id;
-        public UserBookClubJoinService(int id)
+        private readonly Guid _userId;
+        public UserBookClubJoinService(Guid id)
         {
-            _id = id;
+            _userId = id;
         }
         public bool CreateUserBookClubJoin(UserBookClubJoinCreate model)
         {
             var entity = new UserBookClubJoin()
             {
 
-                Id = _id,
+                OwnerId = _userId,
+                UserName=model.UserName,
+                BookClubName=model.BookClubName,
 
-                Reader = model.Reader,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
             using (var ctx = new ApplicationDbContext())
@@ -39,10 +40,10 @@ namespace Bookmarked.Services
             {
                 var query = ctx
                     .UserBookClubJoins
-                    .Where(e => e.Id == _id)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(e => new UserBookClubJoinListItem
                     {
-                        Id = e.Id,
+                        Id=e.Id,
                         ReaderId = e.ReaderId,                        
                     }
 
