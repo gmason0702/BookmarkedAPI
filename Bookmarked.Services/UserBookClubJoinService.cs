@@ -19,16 +19,19 @@ namespace Bookmarked.Services
         }
         public bool CreateUserBookClubJoin(UserBookClubJoinCreate model)
         {
+            var ctx = new ApplicationDbContext();
+            int bookClubId = ctx.BookClubs.Single(e => e.Name == model.BookClubName).BookClubId;
+            string userId = ctx.Users.Single(e => e.UserName == model.UserName).Id;
             var entity = new UserBookClubJoin()
             {
-
                 OwnerId = _userId,
                 UserName=model.UserName,
+                ReaderId=userId,
+                BookClubId=bookClubId,
                 BookClubName=model.BookClubName,
-
                 CreatedUtc = DateTimeOffset.UtcNow
             };
-            using (var ctx = new ApplicationDbContext())
+            using (ctx)
             {
                 ctx.UserBookClubJoins.Add(entity);
                 return ctx.SaveChanges() == 1;
