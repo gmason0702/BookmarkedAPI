@@ -11,22 +11,25 @@ namespace Bookmarked.Services
 {
     public class UserBookJoinService
     {
-        private readonly int _id;
-        public UserBookJoinService(int id)
+        private readonly Guid _userId;
+        public UserBookJoinService(Guid id)
         {
-            _id = id;
+            _userId = id;
         }
         public bool CreateUserBookJoin(UserBookJoinCreate model)
         {
+            var ctx = new ApplicationDbContext();
+            int bookId = ctx.Books.Single(e => e.Name == model.BookName).Id;
+            string userId = ctx.Users.Single(e => e.UserName == model.ReaderUserName).Id;
             var entity = new UserBookJoin()
             {
-
-                Id = _id,
-                Book= model.Book,
-                Reader = model.Reader,
+                ReaderId=userId,
+                OwnerId = _userId,
+                BookId = bookId,
+                Rating=model.Rating,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
-            using (var ctx = new ApplicationDbContext())
+            using (ctx)
             {
                 ctx.UserBookJoins.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -38,7 +41,7 @@ namespace Bookmarked.Services
             {
                 var query = ctx
                     .UserBookJoins
-                    .Where(e => e.Id == _id)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(e => new UserBookListItem
                     {
                         Id = e.Id,

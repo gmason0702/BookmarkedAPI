@@ -13,7 +13,7 @@ namespace Bookmarked.Data
     {       
         [Key]
         public int Id { get; set; }
-        
+        public Guid OwnerId { get; set; }
         public string ReaderId { get; set; }
         [ForeignKey("ReaderId")]
         //navigation property-return type is the class that the Foreign key is relating to         

@@ -111,6 +111,18 @@
     <Compile Include="Migrations\202003061727002_MoreGuidUpdates.Designer.cs">
       <DependentUpon>202003061727002_MoreGuidUpdates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003091456097_UserBookJoinCreationBuildout.cs" />
+    <Compile Include="Migrations\202003091456097_UserBookJoinCreationBuildout.Designer.cs">
+      <DependentUpon>202003091456097_UserBookJoinCreationBuildout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003091511287_UserBookJoinCreationBuildoutConfigTest.cs" />
+    <Compile Include="Migrations\202003091511287_UserBookJoinCreationBuildoutConfigTest.Designer.cs">
+      <DependentUpon>202003091511287_UserBookJoinCreationBuildoutConfigTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003091530276_fixingRatingHopefully.cs" />
+    <Compile Include="Migrations\202003091530276_fixingRatingHopefully.Designer.cs">
+      <DependentUpon>202003091530276_fixingRatingHopefully.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -138,6 +150,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003061727002_MoreGuidUpdates.resx">
       <DependentUpon>202003061727002_MoreGuidUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091456097_UserBookJoinCreationBuildout.resx">
+      <DependentUpon>202003091456097_UserBookJoinCreationBuildout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091511287_UserBookJoinCreationBuildoutConfigTest.resx">
+      <DependentUpon>202003091511287_UserBookJoinCreationBuildoutConfigTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091530276_fixingRatingHopefully.resx">
+      <DependentUpon>202003091530276_fixingRatingHopefully.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

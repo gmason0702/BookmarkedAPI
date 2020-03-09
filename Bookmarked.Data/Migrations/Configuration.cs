@@ -65,6 +65,10 @@ namespace Bookmarked.Data.Migrations
             new Book() { Name = "Huckleberry Finn", Author = "Mark Twain", Genre = "Adventure", CreatedUtc = DateTimeOffset.Now },
             new Book() { Name = "The Catcher in the Rye", Author = "J D Salinger", Genre = "Adult", CreatedUtc = DateTimeOffset.Now }
             );
+
+            context.UserBookJoins.AddOrUpdate(x => x.ReaderId,
+            new UserBookJoin() { ReaderId = "1c0b8895-6943-4732-9200-0ee0a3db7064", BookId = 3, Rating = 5, CreatedUtc = DateTimeOffset.Now });
+
         }
     }
 }
