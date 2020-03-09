@@ -54,6 +54,10 @@ namespace Bookmarked.Services
                     .Select(e => new UserBookListItem
                     {
                         Id = e.Id,
+                        ReaderId = e.ReaderId,
+                        BookId = e.BookId,
+                        Rating = e.Rating
+
                         //Username=e.UserName,
                         BookId = e.BookId
                     }
