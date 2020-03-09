@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bookmarked.Data;
+using System;
 using System.Collections.Generic;
 
 namespace BookmarkedAPI.Models
@@ -32,6 +33,9 @@ namespace BookmarkedAPI.Models
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
+        //public Book Book { get; set; }
+        //public string BookClub { get; set;
+        
     }
 
     public class UserLoginInfoViewModel

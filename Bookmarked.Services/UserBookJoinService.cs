@@ -27,6 +27,7 @@ namespace Bookmarked.Services
             var entity = new UserBookJoin()
             {
 
+
                 UserName=model.UserName,
 
             string userId = ctx.Users.Single(e => e.UserName == model.ReaderUserName).Id;
@@ -54,6 +55,10 @@ namespace Bookmarked.Services
                     .Select(e => new UserBookListItem
                     {
                         Id = e.Id,
+
+                        ReaderId=e.ReaderId,
+                        BookId = e.BookId,
+                        Rating=e.Rating
                         ReaderId = e.ReaderId,
                         BookId = e.BookId,
                         Rating = e.Rating

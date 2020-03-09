@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="BookClub.cs" />
+    <Compile Include="BookClubBookJoin.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202003051948544_SecondMigration.cs" />
     <Compile Include="Migrations\202003051948544_SecondMigration.Designer.cs">
@@ -130,6 +131,10 @@
     <Compile Include="Migrations\202003091723433_updatedMigrationCreateUserBookClubJoin.designer.cs">
       <DependentUpon>202003091723433_updatedMigrationCreateUserBookClubJoin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003092050169_AddedBookClubBookJoinLogic.cs" />
+    <Compile Include="Migrations\202003092050169_AddedBookClubBookJoinLogic.designer.cs">
+      <DependentUpon>202003092050169_AddedBookClubBookJoinLogic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -170,6 +175,14 @@
     <EmbeddedResource Include="Migrations\202003091723433_updatedMigrationCreateUserBookClubJoin.resx">
       <DependentUpon>202003091723433_updatedMigrationCreateUserBookClubJoin.cs</DependentUpon>
     </EmbeddedResource>
+
+    <EmbeddedResource Include="Migrations\202003092050169_AddedBookClubBookJoinLogic.resx">
+      <DependentUpon>202003092050169_AddedBookClubBookJoinLogic.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\knockout-3.5.1.debug.js" />
+    <Content Include="Scripts\knockout-3.5.1.js" />
 
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
