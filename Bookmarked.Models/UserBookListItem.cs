@@ -11,6 +11,6 @@ namespace Bookmarked.Models
         public int Id { get; set; }
         public string ReaderId { get; set; }
         public int BookId { get; set; }
-        public Enum Rating { get; set; }
+        public int Rating { get; set; }
     }
 }
