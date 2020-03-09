@@ -1,4 +1,4 @@
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -23,6 +23,8 @@ namespace BookmarkedAPI.Data
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public virtual ICollection<UserBookJoin> UserBookJoins { get; set; }
+        public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

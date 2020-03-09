@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace BookmarkedAPI.Controllers
 {
+    [Authorize]
     public class BookClubController : ApiController
     {
         public IHttpActionResult Get()
@@ -24,23 +25,23 @@ namespace BookmarkedAPI.Controllers
             var note = noteService.GetBookClubById(id);
             return Ok(note);
         }
-        public IHttpActionResult Post(BookClubCreate note)
+        public IHttpActionResult Post(BookClubCreate bookClub)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateBookClubService();
 
-            if (!service.CreateBookClub(note))
+            if (!service.CreateBookClub(bookClub))
                 return InternalServerError();
 
             return Ok();
         }
         private BookClubService CreateBookClubService()
         {
-            var userId = Convert.ToInt32(User.Identity.GetUserId());
-            var noteService = new BookClubService(userId);
-            return noteService;
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var bookClubService = new BookClubService(userId);
+            return bookClubService;
         }
     }
 }

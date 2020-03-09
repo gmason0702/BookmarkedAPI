@@ -11,8 +11,8 @@ namespace Bookmarked.Services
 {
     public class BookService
     {
-        private readonly int _userId;
-        public BookService(int userId)
+        private readonly Guid _userId;
+        public BookService(Guid userId)
         {
             _userId = userId;
         }
@@ -22,6 +22,7 @@ namespace Bookmarked.Services
                 new Book()
                 {
                     Name = model.Name,
+                    OwnerId = _userId,
                     Author = model.Author,
                     Genre = model.Genre,
                     CreatedUtc = DateTimeOffset.Now
@@ -39,7 +40,7 @@ namespace Bookmarked.Services
                 var query =
                     ctx
                     .Books
-                    .Where(e => e.Id == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                         new BookListItem
@@ -96,5 +97,34 @@ namespace Bookmarked.Services
                     };
             }
         }
+        public bool UpdateBook(BookEdit model)
+        {
+            using (var ctx=new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Id == model.Id);
+                entity.Name = model.Name;
+                entity.Author = model.Author;
+                entity.Genre = model.Genre;
+                entity.PublishedDate = model.PublishedDate;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteBook(int bookId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Id == bookId);
+                ctx.Books.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }
