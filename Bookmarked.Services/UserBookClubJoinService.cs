@@ -12,22 +12,26 @@ namespace Bookmarked.Services
     public class UserBookClubJoinService
     {
 
-        private readonly int _id;
-        public UserBookClubJoinService(int id)
+        private readonly Guid _userId;
+        public UserBookClubJoinService(Guid id)
         {
-            _id = id;
+            _userId = id;
         }
         public bool CreateUserBookClubJoin(UserBookClubJoinCreate model)
         {
+            var ctx = new ApplicationDbContext();
+            int bookClubId = ctx.BookClubs.Single(e => e.Name == model.BookClubName).BookClubId;
+            string userId = ctx.Users.Single(e => e.UserName == model.UserName).Id;
             var entity = new UserBookClubJoin()
             {
-
-                Id = _id,
-
-                Reader = model.Reader,
+                OwnerId = _userId,
+                UserName=model.UserName,
+                ReaderId=userId,
+                BookClubId=bookClubId,
+                BookClubName=model.BookClubName,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
-            using (var ctx = new ApplicationDbContext())
+            using (ctx)
             {
                 ctx.UserBookClubJoins.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -39,10 +43,10 @@ namespace Bookmarked.Services
             {
                 var query = ctx
                     .UserBookClubJoins
-                    .Where(e => e.Id == _id)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(e => new UserBookClubJoinListItem
                     {
-                        Id = e.Id,
+                        Id=e.Id,
                         ReaderId = e.ReaderId,                        
                     }
 

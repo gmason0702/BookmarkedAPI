@@ -1,4 +1,4 @@
-﻿using Bookmarked.Models;
+using Bookmarked.Models;
 using Bookmarked.Services;
 using Microsoft.AspNet.Identity;
 using System;

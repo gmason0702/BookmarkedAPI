@@ -48,8 +48,6 @@ namespace Bookmarked.Services
                             Id = e.Id,
                             Name = e.Name,
                             Author = e.Author,
-                            UserBookJoins = e.UserBookJoins
-
                         }
                     );
                 return query.ToArray();

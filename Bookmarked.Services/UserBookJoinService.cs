@@ -1,4 +1,4 @@
-﻿using Bookmarked.Data;
+using Bookmarked.Data;
 using Bookmarked.Models;
 using BookmarkedAPI.Data;
 using System;
@@ -12,6 +12,9 @@ namespace Bookmarked.Services
     public class UserBookJoinService
     {
         private readonly Guid _userId;
+        public UserBookJoinService(Guid userId)
+        {
+            _userId = userId;
         public UserBookJoinService(Guid id)
         {
             _userId = id;
@@ -20,6 +23,12 @@ namespace Bookmarked.Services
         {
             var ctx = new ApplicationDbContext();
             int bookId = ctx.Books.Single(e => e.Name == model.BookName).Id;
+            string userId = ctx.Users.Single(e => e.UserName == model.UserName).Id;
+            var entity = new UserBookJoin()
+            {
+
+                UserName=model.UserName,
+
             string userId = ctx.Users.Single(e => e.UserName == model.ReaderUserName).Id;
             var entity = new UserBookJoin()
             {
@@ -48,8 +57,10 @@ namespace Bookmarked.Services
                         ReaderId = e.ReaderId,
                         BookId = e.BookId,
                         Rating = e.Rating
-                    }
 
+                        //Username=e.UserName,
+                        BookId = e.BookId
+                    }
                         );
                 return query.ToArray();
             }
