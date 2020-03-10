@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace BookmarkedAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class BookController : ApiController
     {
         public IHttpActionResult Get()
@@ -24,7 +24,7 @@ namespace BookmarkedAPI.Controllers
         {
             BookService bookService = CreateBookService();
             var book = bookService.GetBookByName(name);
-            return Ok();
+            return Ok(book);
         }
         public IHttpActionResult GetByGenre(string genre)
         {
@@ -44,6 +44,14 @@ namespace BookmarkedAPI.Controllers
 
             return Ok(book);
             //return CreatedAtRoute("DefaultApi", new { name = book.Name }, book);
+            //var bookCreate = new BookCreate()
+            //{
+            //    Name = book.Name,
+            //    Author = book.Author,
+            //    Genre = book.Genre
+            //};
+            //return CreatedAtRoute("DefaultApi", new { name = book.Name }, bookCreate);
+        
         }
 
         public IHttpActionResult Put(BookEdit book)

@@ -28,7 +28,7 @@ namespace Bookmarked.Services
                 ReaderId=userId,
                 OwnerId = _userId,
                 BookId = bookId,
-                Rating=model.Rating,
+                Rating = model.Rating,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
             using (ctx)
@@ -47,7 +47,6 @@ namespace Bookmarked.Services
                     .Select(e => new UserBookListItem
                     {
                         Id = e.Id,
-
                         ReaderId=e.ReaderId,
                         BookId = e.BookId,
                         Rating=e.Rating,
@@ -55,6 +54,33 @@ namespace Bookmarked.Services
                     }
                         );
                 return query.ToArray();
+            }
+        }
+        public bool UpdateUserBookJoin(UserBookJoinEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .UserBookJoins
+                    .Single(e => e.Id == model.Id);
+                entity.UserName = model.UserName;
+                entity.BookName = model.BookName;
+                entity.Rating = model.Rating;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteUserBookJoin(int joinId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .UserBookJoins
+                    .Single(e => e.Id == joinId);
+                ctx.UserBookJoins.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

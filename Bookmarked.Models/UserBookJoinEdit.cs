@@ -1,17 +1,14 @@
-using Bookmarked.Data;
-using BookmarkedAPI.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Bookmarked.Models
 {
-    public class UserBookJoinCreate
+    public class UserBookJoinEdit
     {
-        [Required]
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string BookName { get; set; }
         public int Rating { get; set; }

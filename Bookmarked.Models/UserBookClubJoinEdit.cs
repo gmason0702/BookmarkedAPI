@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Bookmarked.Models
 {
-    public class BookClubBookJoinEdit
+    public class UserBookClubJoinEdit
     {
         public int Id { get; set; }
-
-        public string BookName { get; set; }
+        public string UserName { get; set; }
         public string BookClubName { get; set; }
+
     }
 }

@@ -71,5 +71,32 @@ namespace Bookmarked.Services
                     };
             }
         }
+        public bool UpdateBookClub(BookClubEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubs
+                    .Single(e => e.BookClubId == model.BookClubId);
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteBookClub(int bookClubId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubs
+                    .Single(e => e.BookClubId == bookClubId);
+                ctx.BookClubs.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

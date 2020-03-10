@@ -37,6 +37,29 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Put(BookClubEdit book)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateBookClubService();
+
+            if (!service.UpdateBookClub(book))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int bookClubId)
+        {
+            var service = CreateBookClubService();
+            if (!service.DeleteBookClub(bookClubId))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         private BookClubService CreateBookClubService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
