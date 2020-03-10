@@ -31,6 +31,7 @@ namespace BookmarkedAPI.Controllers
             var bookClubName = bookClubService.GetBookClubByName(name);
             return Ok(bookClubName);
         }
+       // [Authorize(Roles = "User")]
         public IHttpActionResult Post(BookClubCreate bookClub)
         {
             if (!ModelState.IsValid)
