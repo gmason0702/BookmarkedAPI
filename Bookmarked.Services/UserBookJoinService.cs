@@ -23,10 +23,12 @@ namespace Bookmarked.Services
             string userId = ctx.Users.Single(e => e.UserName == model.UserName).Id;
             var entity = new UserBookJoin()
             {
+
+                UserName=model.UserName,
                 ReaderId=userId,
                 OwnerId = _userId,
                 BookId = bookId,
-                Rating=model.Rating,
+                Rating = model.Rating,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
             using (ctx)
@@ -120,5 +122,33 @@ namespace Bookmarked.Services
             }
         }
 
+
+        public bool UpdateUserBookJoin(UserBookJoinEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .UserBookJoins
+                    .Single(e => e.Id == model.Id);
+                entity.UserName = model.UserName;
+                entity.BookName = model.BookName;
+                entity.Rating = model.Rating;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteUserBookJoin(int joinId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .UserBookJoins
+                    .Single(e => e.Id == joinId);
+                ctx.UserBookJoins.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
