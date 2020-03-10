@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookClubBookJoinCreate.cs" />
+    <Compile Include="BookClubBookJoinDetail.cs" />
+    <Compile Include="BookClubBookJoinEdit.cs" />
     <Compile Include="BookClubBookListItem.cs" />
     <Compile Include="BookClubDetail.cs" />
     <Compile Include="BookClubListItem.cs" />

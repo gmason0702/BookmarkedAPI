@@ -28,6 +28,7 @@ namespace Bookmarked.Services
                 BookClubId = bookClubId,
                 BookId=bookId,
                 BookClubName = model.BookClubName,
+                BookName = model.BookName,
             };
             using (ctx)
             {
