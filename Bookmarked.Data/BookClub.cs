@@ -13,7 +13,8 @@ namespace Bookmarked.Data
         [Key]
         
         public int BookClubId { get; set; }
-        public Guid OwnerId { get; set; }
+        public Guid OwnerId { get; set; }//Should this be a Guid? I think Id is stored as a string in ApplicaitonUser 
+        //- so maybe this can be string too - it would need to be changed lots of places (Nick)
         [Required]
         public string Name { get; set; }
         [Required]

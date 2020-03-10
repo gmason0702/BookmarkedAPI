@@ -24,7 +24,7 @@ namespace BookmarkedAPI.Controllers
         {
             BookService bookService = CreateBookService();
             var book = bookService.GetBookByName(name);
-            return Ok();
+            return Ok(book);
         }
         public IHttpActionResult GetByGenre(string genre)
         {
@@ -41,6 +41,7 @@ namespace BookmarkedAPI.Controllers
             var service = CreateBookService();
             if (!service.CreateBook(book))
                 return InternalServerError();
+
             return Ok();
             //var bookCreate = new BookCreate()
             //{
@@ -49,6 +50,7 @@ namespace BookmarkedAPI.Controllers
             //    Genre = book.Genre
             //};
             //return CreatedAtRoute("DefaultApi", new { name = book.Name }, bookCreate);
+        
         }
 
         public IHttpActionResult Put(BookEdit book)
