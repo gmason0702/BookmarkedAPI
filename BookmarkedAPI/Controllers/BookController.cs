@@ -62,18 +62,31 @@ namespace BookmarkedAPI.Controllers
         
         }
 
-        public IHttpActionResult Put(BookEdit book)
+        public IHttpActionResult Put(BookEdit bookEdit)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateBookService();
 
-            if (!service.UpdateBook(book))
+            if (!service.EditBook(bookEdit))
                 return InternalServerError();
 
             return Ok();
         }
+        //public IHttpActionResult PutByValue(BookUpdate bookUpdate)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
+
+        //    var service = CreateBookService();
+
+        //    if (!service.UpdateBook(bookUpdate))
+        //        return InternalServerError();
+
+        //    return Ok();
+            
+        //}
 
         public IHttpActionResult Delete(int bookId)
         {

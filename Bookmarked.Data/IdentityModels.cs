@@ -73,5 +73,6 @@ namespace BookmarkedAPI.Data
         {
             HasKey(iur => iur.UserId);
         }
+
     }
 }
