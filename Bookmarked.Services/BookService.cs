@@ -81,7 +81,7 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                         .Books
-                        .Single();
+                        .Single(e=> e.Name==name);
                 return
                     new BookDetail
                     {

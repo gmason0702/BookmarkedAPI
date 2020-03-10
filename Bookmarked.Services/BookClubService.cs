@@ -1,4 +1,4 @@
-﻿using Bookmarked.Data;
+using Bookmarked.Data;
 using Bookmarked.Models;
 using BookmarkedAPI.Data;
 using System;
@@ -71,12 +71,22 @@ namespace Bookmarked.Services
                     };
             }
         }
+        public BookClubDetail GetBookClubByName(string name)
         public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
+                        .BookClubs
+                        .Single(e => e.Name == name);
+                return
+                    new BookClubDetail
+                    {
+                        BookClubId = entity.BookClubId,
+                        Name = entity.Name,
+                        Description = entity.Description,
+                    };
                     .BookClubs
                     .Single(e => e.BookClubId == model.BookClubId);
                 entity.Name = model.Name;
