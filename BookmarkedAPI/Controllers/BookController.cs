@@ -66,7 +66,18 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Put(BookListItem book)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var service = CreateBookService();
+
+            if (!service.UpdateBook(book))
+                return InternalServerError();
+
+            return Ok();
+        }
         public IHttpActionResult Delete(int bookId)
         {
             var service = CreateBookService();
