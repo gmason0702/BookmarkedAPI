@@ -60,6 +60,7 @@
     <Compile Include="BookClubBookJoinCreate.cs" />
     <Compile Include="BookClubBookListItem.cs" />
     <Compile Include="BookClubDetail.cs" />
+    <Compile Include="BookClubEdit.cs" />
     <Compile Include="BookClubListItem.cs" />
     <Compile Include="BookCreate.cs" />
     <Compile Include="BookDetail.cs" />
