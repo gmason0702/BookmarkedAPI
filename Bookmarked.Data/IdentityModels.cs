@@ -73,9 +73,5 @@ namespace BookmarkedAPI.Data
         {
             HasKey(iur => iur.UserId);
         }
-
-        public DbSet<Book> Books { get; set; }
-        public DbSet<UserBookClubJoin> UserBookClubJoins { get; set; }
-
     }
 }

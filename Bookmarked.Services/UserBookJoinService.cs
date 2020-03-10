@@ -35,43 +35,90 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserBookListItem> GetUserBooks()
+        //public IEnumerable<UserBookListItem> GetUserBooks()//commenting out for now because you can only have on get - probably don't need this
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query = ctx
+        //            .UserBookJoins
+        //            .Where(e => e.OwnerId == _userId)
+        //            .Select(e => new UserBookListItem
+        //            {
+        //                Id = e.Id,
+        //                ReaderId=e.ReaderId,
+        //                BookId = e.BookId,
+        //                Rating=e.Rating,
+        //                //Username=e.UserName,
+        //            }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
+        //public IEnumerable<UserBookListItem> GetAllUserBooks(int id)//commenting out for now because you can only have on get - probably don't need this
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query = ctx
+        //            .UserBookJoins
+        //            .Where(e => e.Id > id)
+        //            .Select(e => new UserBookListItem
+        //            {
+        //                Id = e.Id,
+        //                ReaderId = e.ReaderId,
+        //                BookId = e.BookId,
+        //                Rating = e.Rating,
+        //                //Username=e.UserName,
+        //            }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
+        public IEnumerable<UserBookDetail> GetUserBookDetails()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
                     .UserBookJoins
                     .Where(e => e.OwnerId == _userId)
-                    .Select(e => new UserBookListItem
+                    .Select(e => new UserBookDetail
                     {
                         Id = e.Id,
-                        ReaderId=e.ReaderId,
+                        ReaderId = e.ReaderId,
+                        FirstName= ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).FirstName,
+                        LastName= ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).LastName,
+                        UserName= ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
                         BookId = e.BookId,
-                        Rating=e.Rating,
-                        //Username=e.UserName,
+                        BookName= ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
+                        Author= ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
+                        Rating = e.Rating,
                     }
                         );
                 return query.ToArray();
             }
         }
-        public IEnumerable<UserBookListItem> GetAllUserBooks(int id)
+        public IEnumerable<UserBookDetail> GetAllUserBookDetails(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
                     .UserBookJoins
                     .Where(e => e.Id > id)
-                    .Select(e => new UserBookListItem
+                    .Select(e => new UserBookDetail
                     {
                         Id = e.Id,
                         ReaderId = e.ReaderId,
+                        FirstName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).FirstName,
+                        LastName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).LastName,
+                        UserName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
                         BookId = e.BookId,
+                        BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
+                        Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
                         Rating = e.Rating,
-                        //Username=e.UserName,
                     }
                         );
                 return query.ToArray();
             }
         }
+
     }
 }

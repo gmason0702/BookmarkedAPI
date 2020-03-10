@@ -17,6 +17,5 @@ namespace Bookmarked.Models
         public string BookName { get; set; }
         public string Author { get; set; }
         public int Rating { get; set; }
-
     }
 }
