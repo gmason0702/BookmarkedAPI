@@ -48,6 +48,27 @@ namespace Bookmarked.Services
                             Id = e.Id,
                             Name = e.Name,
                             Author = e.Author,
+                            Genre=e.Genre
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<BookListItem> GetAllBooks(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Books
+                    .Where(e => e.Id > id)
+                    .Select(
+                        e =>
+                        new BookListItem
+                        {
+                            Id = e.Id,
+                            Name = e.Name,
+                            Author = e.Author,
                         }
                     );
                 return query.ToArray();

@@ -54,6 +54,32 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public bool UpdateUserBookClubJoin(UserBookClubJoinEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .UserBookClubJoins
+                    .Single(e => e.Id == model.Id);
+                entity.UserName = model.UserName;
+                entity.BookClubName = model.BookClubName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteUserBookClubJoin(int joinId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .UserBookClubJoins
+                    .Single(e => e.Id == joinId);
+                ctx.UserBookClubJoins.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
 

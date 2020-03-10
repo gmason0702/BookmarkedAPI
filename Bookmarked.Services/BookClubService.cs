@@ -1,4 +1,4 @@
-﻿using Bookmarked.Data;
+using Bookmarked.Data;
 using Bookmarked.Models;
 using BookmarkedAPI.Data;
 using System;
@@ -72,6 +72,7 @@ namespace Bookmarked.Services
             }
         }
         public BookClubDetail GetBookClubByName(string name)
+        public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -86,6 +87,25 @@ namespace Bookmarked.Services
                         Name = entity.Name,
                         Description = entity.Description,
                     };
+                    .BookClubs
+                    .Single(e => e.BookClubId == model.BookClubId);
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteBookClub(int bookClubId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubs
+                    .Single(e => e.BookClubId == bookClubId);
+                ctx.BookClubs.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }
