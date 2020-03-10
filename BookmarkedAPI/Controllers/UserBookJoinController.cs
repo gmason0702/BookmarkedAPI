@@ -17,9 +17,16 @@ namespace BookmarkedAPI.Controllers
         public IHttpActionResult Get()
         {
             UserBookJoinService userBookJoinService = CreateUserBookJoinService();
-            var bookJoin = userBookJoinService.GetUserBook();
+            var bookJoin = userBookJoinService.GetUserBooks();
             return Ok(bookJoin);
         }
+        public IHttpActionResult GetAll(int id)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetAllUserBooks(id);
+            return Ok(bookJoin);
+        }
+
         public IHttpActionResult Post(UserBookJoinCreate bookjoin)
         {
             if (!ModelState.IsValid)

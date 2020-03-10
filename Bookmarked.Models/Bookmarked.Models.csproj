@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoinCreate.cs" />
     <Compile Include="UserBookClubJoinListItem.cs" />
+    <Compile Include="UserBookDetail.cs" />
     <Compile Include="UserBookJoinCreate.cs" />
     <Compile Include="UserBookListItem.cs" />
   </ItemGroup>

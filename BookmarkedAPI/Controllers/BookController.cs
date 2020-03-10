@@ -20,11 +20,19 @@ namespace BookmarkedAPI.Controllers
             return Ok(books);
         }
 
+        public IHttpActionResult GetAll(int id)
+        {
+            BookService bookService = CreateBookService();
+            var books = bookService.GetAllBooks(id);
+            return Ok(books);
+        }
+
+
         public IHttpActionResult GetByName(string name)
         {
             BookService bookService = CreateBookService();
             var book = bookService.GetBookByName(name);
-            return Ok();
+            return Ok(book);
         }
         public IHttpActionResult GetByGenre(string genre)
         {

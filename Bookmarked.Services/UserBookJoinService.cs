@@ -35,7 +35,7 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserBookListItem> GetUserBook()
+        public IEnumerable<UserBookListItem> GetUserBooks()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,6 +48,25 @@ namespace Bookmarked.Services
                         ReaderId=e.ReaderId,
                         BookId = e.BookId,
                         Rating=e.Rating,
+                        //Username=e.UserName,
+                    }
+                        );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<UserBookListItem> GetAllUserBooks(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .UserBookJoins
+                    .Where(e => e.Id > id)
+                    .Select(e => new UserBookListItem
+                    {
+                        Id = e.Id,
+                        ReaderId = e.ReaderId,
+                        BookId = e.BookId,
+                        Rating = e.Rating,
                         //Username=e.UserName,
                     }
                         );
