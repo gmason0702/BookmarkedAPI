@@ -72,6 +72,7 @@
     <Compile Include="UserBookClubJoinEdit.cs" />
     <Compile Include="UserBookClubJoinCreate.cs" />
     <Compile Include="UserBookClubJoinListItem.cs" />
+    <Compile Include="UserBookDetail.cs" />
     <Compile Include="UserBookJoinCreate.cs" />
     <Compile Include="UserBookJoinEdit.cs" />
     <Compile Include="UserBookListItem.cs" />

@@ -14,12 +14,34 @@ namespace BookmarkedAPI.Controllers
     public class UserBookJoinController : ApiController
     {
         //GET METHOD
-        public IHttpActionResult Get()
+        //public IHttpActionResult Get()//commenting out for now because you can only have on get - probably don't need this
+        //{
+        //    UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+        //    var bookJoin = userBookJoinService.GetUserBooks();
+        //    return Ok(bookJoin);
+        //}
+        public IHttpActionResult GetDetails()
         {
             UserBookJoinService userBookJoinService = CreateUserBookJoinService();
-            var bookJoin = userBookJoinService.GetUserBook();
+            var bookJoin = userBookJoinService.GetUserBookDetails();
             return Ok(bookJoin);
         }
+
+        //public IHttpActionResult GetAll(int id)//commenting out for now because you can only have on get - probably don't need this
+        //{
+        //    UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+        //    var bookJoin = userBookJoinService.GetAllUserBooks(id);
+        //    return Ok(bookJoin);
+        //}
+
+        public IHttpActionResult GetAllDetails(int id)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetAllUserBookDetails(id);
+            return Ok(bookJoin);
+        }
+
+
         public IHttpActionResult Post(UserBookJoinCreate bookjoin)
         {
             if (!ModelState.IsValid)
