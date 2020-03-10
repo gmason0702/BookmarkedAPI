@@ -15,9 +15,6 @@ namespace Bookmarked.Services
         public UserBookJoinService(Guid userId)
         {
             _userId = userId;
-        public UserBookJoinService(Guid id)
-        {
-            _userId = id;
         }
         public bool CreateUserBookJoin(UserBookJoinCreate model)
         {
