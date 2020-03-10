@@ -42,7 +42,8 @@ namespace BookmarkedAPI.Controllers
             if (!service.CreateBook(book))
                 return InternalServerError();
 
-            return Ok();
+            return Ok(book);
+            //return CreatedAtRoute("DefaultApi", new { name = book.Name }, book);
             //var bookCreate = new BookCreate()
             //{
             //    Name = book.Name,
