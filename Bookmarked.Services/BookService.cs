@@ -60,7 +60,7 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                         .Books
-                        .Single(e => e.Name == name);
+                        .Single();
                 return
                     new BookDetail
                     {
@@ -74,25 +74,25 @@ namespace Bookmarked.Services
                     };
             }
         }
-        public BookDetail GetBookByGenre(string genre)
+        public IEnumerable<BookListItem> GetBookByGenre(string genre)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.Genre == genre);
-                return
-                    new BookDetail
-                    {
-                        Id = entity.Id,
-                        Name = entity.Name,
-                        Author = entity.Author,
-                        Genre = entity.Genre,
-                        CreatedUtc = entity.CreatedUtc,
-                        PublishedDate = entity.PublishedDate,
-                        UserBookJoins = entity.UserBookJoins
-                    };
+                    .Where(e => e.Genre == genre)
+                    .Select(e =>
+                       new BookListItem
+                       {
+                           Id = e.Id,
+                           Name = e.Name,
+                           Author = e.Author,
+                           
+                       }
+                        );
+                return entity.ToArray();
+                    
             }
         }
         public bool UpdateBook(BookEdit model)
