@@ -21,9 +21,15 @@ namespace BookmarkedAPI.Controllers
         }
         public IHttpActionResult Get(int id)
         {
-            BookClubService noteService = CreateBookClubService();
-            var note = noteService.GetBookClubById(id);
+            BookClubService bookClubService = CreateBookClubService();
+            var note = bookClubService.GetBookClubById(id);
             return Ok(note);
+        }
+        public IHttpActionResult Get(string name)
+        {
+            BookClubService bookClubService = CreateBookClubService();
+            var bookClubName = bookClubService.GetBookClubByName(name);
+            return Ok(bookClubName);
         }
         public IHttpActionResult Post(BookClubCreate bookClub)
         {

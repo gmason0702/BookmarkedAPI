@@ -71,5 +71,22 @@ namespace Bookmarked.Services
                     };
             }
         }
+        public BookClubDetail GetBookClubByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .BookClubs
+                        .Single(e => e.Name == name);
+                return
+                    new BookClubDetail
+                    {
+                        BookClubId = entity.BookClubId,
+                        Name = entity.Name,
+                        Description = entity.Description,
+                    };
+            }
+        }
     }
 }
