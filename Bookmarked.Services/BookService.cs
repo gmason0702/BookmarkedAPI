@@ -54,6 +54,26 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<BookListItem> GetAllBooks(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Books
+                    .Where(e => e.Id > id)
+                    .Select(
+                        e =>
+                        new BookListItem
+                        {
+                            Id = e.Id,
+                            Name = e.Name,
+                            Author = e.Author,
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
         public BookDetail GetBookByName(string name)
         {
             using (var ctx = new ApplicationDbContext())
@@ -62,6 +82,7 @@ namespace Bookmarked.Services
                     ctx
                         .Books
                         .Single(e => e.Name == name);
+                        
                 return
                     new BookDetail
                     {

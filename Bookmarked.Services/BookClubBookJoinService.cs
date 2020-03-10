@@ -28,6 +28,7 @@ namespace Bookmarked.Services
                 BookClubId = bookClubId,
                 BookId=bookId,
                 BookClubName = model.BookClubName,
+                BookName = model.BookName,
             };
             using (ctx)
             {
@@ -50,6 +51,32 @@ namespace Bookmarked.Services
 
                         );
                 return query.ToArray();
+            }
+        }
+        public bool UpdateBookClubBookJoin(BookClubBookJoinEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubBookJoins
+                    .Single(e => e.Id == model.Id);
+                entity.BookName = model.BookName;
+                entity.BookClubName = model.BookClubName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteBookClubBookJoin(int bookId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubBookJoins
+                    .Single(e => e.Id == bookId);
+                ctx.BookClubBookJoins.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }
