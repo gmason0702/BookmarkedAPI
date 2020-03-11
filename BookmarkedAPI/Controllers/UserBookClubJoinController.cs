@@ -32,6 +32,12 @@ namespace BookmarkedAPI.Controllers
             var userBookClubJoin = userBookClubJoinService.GetAllUserBookClubDetails(id);
             return Ok(userBookClubJoin);
         }
+        public IHttpActionResult GetAllBookClubsOfUser(string userName)
+        {
+            UserBookClubJoinService userBookClubService = CreateUserBookClubJoinService();
+            var userBookClubJoin = userBookClubService.GetAllBookClubsOfUser(userName);
+            return Ok(userBookClubJoin);
+        }
         public IHttpActionResult Post(UserBookClubJoinCreate bookClubjoin)
         {
             if (!ModelState.IsValid)

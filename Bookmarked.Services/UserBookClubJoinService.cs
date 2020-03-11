@@ -92,6 +92,24 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<BookClubDetail> GetAllBookClubsOfUser(string userName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .UserBookClubJoins
+                    .Where(e => e.UserName == userName)
+                .Select(e => new BookClubDetail
+                {
+                    Name = e.BookClubName,
+                    BookClubId = e.BookClubId,
+                    Description = e.Description,
+                }
+                );
+                return query.ToArray();
+            }
+        }
 
         public bool UpdateUserBookClubJoin(UserBookClubJoinEdit model)
         {

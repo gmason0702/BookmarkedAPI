@@ -89,7 +89,6 @@ namespace Bookmarked.Services
             };
         }
 
-
         public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
