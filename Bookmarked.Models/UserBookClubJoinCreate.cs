@@ -11,8 +11,11 @@ namespace Bookmarked.Models
 {
     public class UserBookClubJoinCreate
     {
-        [Required]
-        public ApplicationUser Reader { get; set; }
-        public BookClub BookClub { get; set; }
+        //[Required]
+        //public ApplicationUser Reader { get; set; }
+        //public BookClub BookClub { get; set; }
+
+        public string UserName { get; set; }
+        public string BookClubName { get; set; }
     }
 }

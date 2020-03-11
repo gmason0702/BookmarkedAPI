@@ -1,4 +1,4 @@
-﻿using Bookmarked.Data;
+using Bookmarked.Data;
 using BookmarkedAPI.Data;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,8 @@ namespace Bookmarked.Models
     public class UserBookJoinCreate
     {
         [Required]
-        public ApplicationUser Reader { get; set; }
-        public Book Book { get; set; }
-
-
+        public string UserName { get; set; }
+        public string BookName { get; set; }
+        public int Rating { get; set; }
     }
 }

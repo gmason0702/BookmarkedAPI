@@ -1,24 +1,73 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿@*@section scripts {
+    @Scripts.Render("~/bundles/app")
+}*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ulBooks = $('#ulBooks');
+
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'api/Book',
+                    datatype: 'json',
+                    success: function (data) {
+                        ulBooks.empty();
+                        $.each(data, function (index, val) {
+                            var title = val.Name;
+                            ulBooks.Append('<li>' + title + '</li>')
+                        });
+                    }
+                });
+                $('#btnClear').click(function () {
+                    ulBooks.empty();
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <input id="btn" type= "button" value="Books"/>
+    <input id="btnClear" type="button" value="Clear" />
+    <ul id="ulBooks"></ul>
+</body>
+</html>
+
+<!--<div class="page-header">
+    <h1>Bookmarked</h1>
 </div>
+
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Book</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: Book">
+                    <li>
+                        <strong><span data-bind="text: Author"></span></strong>: <span data-bind="text: Name"></span>
+                        <small><a href="#">Details</a></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @*<div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>*@
     </div>
+
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        DETAILS
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+
+<div class="col-md-4">
+    ADD NEW BOOK
 </div>
+</div>-->
+
+<!---->

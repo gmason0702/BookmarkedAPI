@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace BookmarkedAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class BookController : ApiController
     {
         public IHttpActionResult Get()
@@ -20,11 +20,19 @@ namespace BookmarkedAPI.Controllers
             return Ok(books);
         }
 
+        public IHttpActionResult GetAll(int id)
+        {
+            BookService bookService = CreateBookService();
+            var books = bookService.GetAllBooks(id);
+            return Ok(books);
+        }
+
+
         public IHttpActionResult GetByName(string name)
         {
             BookService bookService = CreateBookService();
             var book = bookService.GetBookByName(name);
-            return Ok();
+            return Ok(book);
         }
         public IHttpActionResult GetByGenre(string genre)
         {
@@ -42,21 +50,45 @@ namespace BookmarkedAPI.Controllers
             if (!service.CreateBook(book))
                 return InternalServerError();
 
-            return Ok();
+            return Ok(book);
+            //return CreatedAtRoute("DefaultApi", new { name = book.Name }, book);
+            //var bookCreate = new BookCreate()
+            //{
+            //    Name = book.Name,
+            //    Author = book.Author,
+            //    Genre = book.Genre
+            //};
+            //return CreatedAtRoute("DefaultApi", new { name = book.Name }, bookCreate);
+
         }
 
-        public IHttpActionResult Put(BookEdit book)
+        public IHttpActionResult Put(BookEdit bookEdit)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateBookService();
 
-            if (!service.UpdateBook(book))
+            if (!service.EditBook(bookEdit))
                 return InternalServerError();
 
             return Ok();
         }
+
+        //public IHttpActionResult PutByValue(BookUpdate bookUpdate)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
+
+        //    var service = CreateBookService();
+
+        //    if (!service.UpdateBook(bookUpdate))
+        //        return InternalServerError();
+
+        //    return Ok();
+
+        //}
+
 
         public IHttpActionResult Delete(int bookId)
         {

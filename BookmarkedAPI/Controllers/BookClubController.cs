@@ -21,10 +21,18 @@ namespace BookmarkedAPI.Controllers
         }
         public IHttpActionResult Get(int id)
         {
-            BookClubService noteService = CreateBookClubService();
-            var note = noteService.GetBookClubById(id);
+            BookClubService bookClubService = CreateBookClubService();
+            var note = bookClubService.GetBookClubById(id);
             return Ok(note);
         }
+        public IHttpActionResult Get(string name)
+        {
+            BookClubService bookClubService = CreateBookClubService();
+            var bookClubName = bookClubService.GetBookClubByName(name);
+            return Ok(bookClubName);
+        }
+
+        // [Authorize(Roles = "User")]
         public IHttpActionResult Post(BookClubCreate bookClub)
         {
             if (!ModelState.IsValid)
@@ -37,6 +45,29 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Put(BookClubEdit book)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateBookClubService();
+
+            if (!service.UpdateBookClub(book))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int bookClubId)
+        {
+            var service = CreateBookClubService();
+            if (!service.DeleteBookClub(bookClubId))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         private BookClubService CreateBookClubService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
