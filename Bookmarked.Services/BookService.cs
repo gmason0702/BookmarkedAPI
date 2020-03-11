@@ -48,7 +48,27 @@ namespace Bookmarked.Services
                             Id = e.Id,
                             Name = e.Name,
                             Author = e.Author,
-                            Genre=e.Genre
+                            Genre = e.Genre
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<BookListItem> GetAllBooks(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Books
+                    .Where(e => e.Id > id)
+                    .Select(
+                        e =>
+                        new BookListItem
+                        {
+                            Id = e.Id,
+                            Name = e.Name,
+                            Author = e.Author,
                         }
                     );
                 return query.ToArray();
@@ -56,12 +76,13 @@ namespace Bookmarked.Services
         }
         public BookDetail GetBookByName(string name)
         {
-            using (var ctx= new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Books
-                        .Single();
+                        .Single(e => e.Name == name);
+                        
                 return
                     new BookDetail
                     {
@@ -89,25 +110,117 @@ namespace Bookmarked.Services
                            Id = e.Id,
                            Name = e.Name,
                            Author = e.Author,
-                           
+
                        }
                         );
                 return entity.ToArray();
-                    
+
             }
         }
-        public bool UpdateBook(BookEdit model)
+        public IEnumerable<BookListItem> GetBookByAuthor(string author)
         {
-            using (var ctx=new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.Id == model.Id);
-                entity.Name = model.Name;
-                entity.Author = model.Author;
-                entity.Genre = model.Genre;
-                entity.PublishedDate = model.PublishedDate;
+                    .Where(e => e.Author == author)
+                    .Select(e =>
+                        new BookListItem
+                        {
+                            Id = e.Id,
+                            Name = e.Name,
+                            Genre = e.Genre
+                        }
+                        );
+                return entity.ToArray();
+            }
+        }
+        public bool EditBook(BookEdit modelEdit)
+        {
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Id == modelEdit.Id);
+                entity.Name = modelEdit.Name;
+                entity.Author = modelEdit.Author;
+                entity.Genre = modelEdit.Genre;
+                entity.PublishedDate = modelEdit.PublishedDate;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool UpdateBook(BookUpdate modelUpdate)
+        {
+
+            if (modelUpdate.PropertyValue == "Name")
+            {
+                var book = GetBookByName(modelUpdate.BookName);
+
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity =
+                        ctx
+                        .Books
+                        .Single(e => e.Id == book.Id);
+                    entity.Name = modelUpdate.NewValue;
+                    //entity.Author = book.Author;
+                    //entity.Genre = book.Genre;
+                    //entity.PublishedDate = book.PublishedDate;
+
+                    return ctx.SaveChanges() == 1;
+                }
+            }
+            else if (modelUpdate.PropertyValue == "Author")
+            {
+                var book = GetBookByName(modelUpdate.BookName);
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity =
+                        ctx
+                        .Books
+                        .Single(e => e.Id == book.Id);
+                    entity.Author = modelUpdate.NewValue;
+
+                    return ctx.SaveChanges() == 1;
+                }
+            }
+            else if (modelUpdate.PropertyValue=="Genre")
+            {
+                var book = GetBookByName(modelUpdate.BookName);
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity =
+                        ctx
+                        .Books
+                        .Single(e => e.Id == book.Id);
+                    entity.Genre = modelUpdate.NewValue;
+
+                    return ctx.SaveChanges() == 1;
+
+                }
+            }
+            return false;
+
+        }
+
+        public bool UpdateBookGenre(string oldGenre, string newGenre)
+        {
+            var book = GetBookByName(oldGenre);
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Id == book.Id);
+                entity.Name = newGenre;
+                //entity.Author = book.Author;
+                //entity.Genre = book.Genre;
+                //entity.PublishedDate = book.PublishedDate;
 
                 return ctx.SaveChanges() == 1;
             }
