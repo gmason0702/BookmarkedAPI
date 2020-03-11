@@ -69,6 +69,7 @@ namespace Bookmarked.Services
                             Id = e.Id,
                             Name = e.Name,
                             Author = e.Author,
+                            Genre = e.Genre
                         }
                     );
                 return query.ToArray();
@@ -92,7 +93,6 @@ namespace Bookmarked.Services
                         Genre = entity.Genre,
                         CreatedUtc = entity.CreatedUtc,
                         PublishedDate = entity.PublishedDate,
-                        UserBookJoins = entity.UserBookJoins
                     };
             }
         }
@@ -110,7 +110,7 @@ namespace Bookmarked.Services
                            Id = e.Id,
                            Name = e.Name,
                            Author = e.Author,
-
+                           Genre = e.Genre,
                        }
                         );
                 return entity.ToArray();
@@ -130,7 +130,8 @@ namespace Bookmarked.Services
                         {
                             Id = e.Id,
                             Name = e.Name,
-                            Genre = e.Genre
+                            Author = e.Author,
+                            Genre = e.Genre,
                         }
                         );
                 return entity.ToArray();

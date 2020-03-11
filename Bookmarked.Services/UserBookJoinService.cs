@@ -121,6 +121,30 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<UserBookDetail> GetUserBookDetailsByUserName(string userName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .UserBookJoins
+                    .Where(e => e.ReaderId == ctx.Users.FirstOrDefault(y => y.UserName == userName).Id)
+                    .Select(e => new UserBookDetail
+                    {
+                        Id = e.Id,
+                        ReaderId = e.ReaderId,
+                        FirstName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).FirstName,
+                        LastName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).LastName,
+                        UserName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
+                        BookId = e.BookId,
+                        BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
+                        Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
+                        Rating = e.Rating,
+                    }
+                        );
+                return query.ToArray();
+            }
+        }
+
 
 
         public bool UpdateUserBookJoin(UserBookJoinEdit model)

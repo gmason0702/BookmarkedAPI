@@ -89,7 +89,6 @@ namespace Bookmarked.Services
             };
         }
 
-
         public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -97,7 +96,7 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                         .BookClubs
-                        .Single(e => e.BookClubId == model.BookClubId);
+                    .Single(e => e.BookClubId == model.BookClubId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
 
