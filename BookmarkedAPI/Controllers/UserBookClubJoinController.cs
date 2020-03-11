@@ -14,11 +14,23 @@ namespace BookmarkedAPI.Controllers
     public class UserBookClubJoinController : ApiController
     {
         //GET METHOD
-        public IHttpActionResult Get()
+        //public IHttpActionResult Get()
+        //{
+        //    UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
+        //    var bookClubJoin = userBookClubJoinService.GetUserBookClub();
+        //    return Ok(bookClubJoin);
+        //}
+        public IHttpActionResult GetDetails()
         {
             UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
-            var bookClubJoin = userBookClubJoinService.GetUserBookClub();
-            return Ok(bookClubJoin);
+            var userBookClubJoin = userBookClubJoinService.GetUserBookClubDetails();
+            return Ok(userBookClubJoin);
+        }
+        public IHttpActionResult GetAllDetails(int id)
+        {
+            UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
+            var userBookClubJoin = userBookClubJoinService.GetAllUserBookClubDetails(id);
+            return Ok(userBookClubJoin);
         }
         public IHttpActionResult Post(UserBookClubJoinCreate bookClubjoin)
         {

@@ -59,7 +59,7 @@ namespace BookmarkedAPI.Controllers
             //    Genre = book.Genre
             //};
             //return CreatedAtRoute("DefaultApi", new { name = book.Name }, bookCreate);
-        
+
         }
 
         public IHttpActionResult Put(BookEdit bookEdit)
@@ -74,6 +74,7 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+
         //public IHttpActionResult PutByValue(BookUpdate bookUpdate)
         //{
         //    if (!ModelState.IsValid)
@@ -85,8 +86,9 @@ namespace BookmarkedAPI.Controllers
         //        return InternalServerError();
 
         //    return Ok();
-            
+
         //}
+
 
         public IHttpActionResult Delete(int bookId)
         {
