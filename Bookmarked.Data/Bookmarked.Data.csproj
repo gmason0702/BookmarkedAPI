@@ -139,6 +139,10 @@
     <Compile Include="Migrations\202003101420349_fixing add migrations.designer.cs">
       <DependentUpon>202003101420349_fixing add migrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003111835505_FixingDataBase.cs" />
+    <Compile Include="Migrations\202003111835505_FixingDataBase.designer.cs">
+      <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003101420349_fixing add migrations.resx">
       <DependentUpon>202003101420349_fixing add migrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003111835505_FixingDataBase.resx">
+      <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
