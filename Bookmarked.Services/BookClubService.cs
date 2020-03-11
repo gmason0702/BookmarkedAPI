@@ -72,6 +72,22 @@ namespace Bookmarked.Services
             }
         }
         public BookClubDetail GetBookClubByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubs
+                    .Single(e => e.Name == name);
+                return
+                    new BookClubDetail
+                    {
+                        BookClubId = entity.BookClubId,
+                        Name = entity.Name,
+                        Description = entity.Description
+                    };
+            }
+        }
         public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -79,15 +95,6 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                         .BookClubs
-                        .Single(e => e.Name == name);
-                return
-                    new BookClubDetail
-                    {
-                        BookClubId = entity.BookClubId,
-                        Name = entity.Name,
-                        Description = entity.Description,
-                    };
-                    .BookClubs
                     .Single(e => e.BookClubId == model.BookClubId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
