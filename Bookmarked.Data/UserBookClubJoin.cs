@@ -24,6 +24,7 @@ namespace Bookmarked.Data
         public int BookClubId { get; set; }
         [ForeignKey("BookClubId")]
         public virtual BookClub Club { get; set; }
+
         public DateTimeOffset CreatedUtc { get; set; }
     }
 }

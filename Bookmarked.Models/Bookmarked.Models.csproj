@@ -70,6 +70,7 @@
     <Compile Include="BookClubCreate.cs" />
     <Compile Include="BookUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserBookClubDetail.cs" />
     <Compile Include="UserBookClubJoinEdit.cs" />
     <Compile Include="UserBookClubJoinCreate.cs" />
     <Compile Include="UserBookClubJoinListItem.cs" />
