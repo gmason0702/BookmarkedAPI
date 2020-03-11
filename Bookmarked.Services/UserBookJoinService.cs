@@ -138,6 +138,7 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
         public bool DeleteUserBookJoin(int joinId)
         {
             using (var ctx = new ApplicationDbContext())

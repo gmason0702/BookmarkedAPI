@@ -13,11 +13,14 @@ namespace BookmarkedAPI.Controllers
     //[Authorize]
     public class BookController : ApiController
     {
+        
         public IHttpActionResult Get()
         {
+
             BookService bookService = CreateBookService();
             var books = bookService.GetBooks();
             return Ok(books);
+
         }
 
         public IHttpActionResult GetAll(int id)
@@ -99,8 +102,10 @@ namespace BookmarkedAPI.Controllers
 
         private BookService CreateBookService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var bookService = new BookService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            //var bookService = new BookService(Guid.NewGuid());
+            var bookService = new BookService(new Guid());
+            //var bookService = new BookService(userId);
             return bookService;
         }
     }

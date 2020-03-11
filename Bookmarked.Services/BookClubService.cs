@@ -71,8 +71,8 @@ namespace Bookmarked.Services
                     };
             }
         }
+
         public BookClubDetail GetBookClubByName(string name)
-        public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -85,14 +85,25 @@ namespace Bookmarked.Services
                     {
                         BookClubId = entity.BookClubId,
                         Name = entity.Name,
-                        Description = entity.Description,
+                        Description = entity.Description
                     };
+            }
+
+        }
+        public bool UpdateBookClub(BookClubEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+
+                var entity =
+                    ctx
                     .BookClubs
                     .Single(e => e.BookClubId == model.BookClubId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
 
                 return ctx.SaveChanges() == 1;
+
             }
         }
 
