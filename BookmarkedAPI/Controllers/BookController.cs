@@ -103,9 +103,17 @@ namespace BookmarkedAPI.Controllers
         private BookService CreateBookService()
         {
             //var userId = Guid.Parse(User.Identity.GetUserId());
-            //var bookService = new BookService(Guid.NewGuid());
-            var bookService = new BookService(new Guid());
             //var bookService = new BookService(userId);
+            //return bookService;
+
+            //var bookService = new BookService(Guid.NewGuid());
+            //return bookService;
+
+            //var bookService = new BookService(new Guid());
+            //return bookService;
+
+            var userId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var bookService = new BookService(userId);
             return bookService;
         }
     }

@@ -136,6 +136,8 @@ namespace Bookmarked.Services
                 return entity.ToArray();
             }
         }
+
+
         public bool EditBook(BookEdit modelEdit)
         {
 

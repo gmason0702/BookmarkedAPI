@@ -1,8 +1,16 @@
 ﻿body {
-    background-image: url(https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);
+    background-image: url(https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60);
     background-size: cover;
-    font-size: 1.5rem;
+    background-position: center;
+    background-attachment: fixed;
+    font-size: 1rem;
     font-weight: 600;
+}
+.body-content {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2rem 2rem 2rem 2rem;
+    border-radius: 25px;
+    
 }
 .form-group{
     display: block;
@@ -13,14 +21,24 @@ p {
 
 .navbar-brand {
     display: inline-block;
-    padding-top: 0.3125rem;
+    padding-top: 0rem;
     padding-bottom: 0.3125rem;
     margin-right: 1rem;
-    font-size: 2.8rem;
+    font-size: 3.8rem;
     line-height: inherit;
     white-space: nowrap;
+    padding-left:20rem;
+    text-transform:uppercase;
 }
 
 h2{
     font-size:1rem;
+}
+
+img{
+    opacity: 0.5;
+}
+
+a{
+    color: midnightblue;
 }

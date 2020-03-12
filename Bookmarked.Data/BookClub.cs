@@ -17,6 +17,7 @@ namespace Bookmarked.Data
         //- so maybe this can be string too - it would need to be changed lots of places (Nick)
         [Required]
         public string Name { get; set; }
+        public int BookId { get; set; }
         [Required]
         public string Description { get; set; }
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }

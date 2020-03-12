@@ -111,7 +111,7 @@ namespace BookmarkedAPI.Controllers
             {
                 client.BaseAddress = new Uri("https://localhost:44371/api/");
 
-                var deleteTask = client.DeleteAsync("book/" + id.ToString());
+                var deleteTask = client.DeleteAsync("Book?bookId=" + id.ToString());
                 deleteTask.Wait();
 
                 var result = deleteTask.Result;
