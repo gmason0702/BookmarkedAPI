@@ -47,6 +47,8 @@ namespace Bookmarked.Services
                                 {
                                     BookClubId = e.BookClubId,
                                     Name = e.Name,
+                                    Description=e.Description,
+                                    BookName=ctx.Books.FirstOrDefault(s=>s.Id==ctx.BookClubBookJoins.FirstOrDefault(j=>j.BookClubId==e.BookClubId).BookId).Name,
                                     CreatedUtc = e.CreatedUtc
                                 }
                         );

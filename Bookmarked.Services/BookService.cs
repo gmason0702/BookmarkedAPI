@@ -69,7 +69,7 @@ namespace Bookmarked.Services
                             Id = e.Id,
                             Name = e.Name,
                             Author = e.Author,
-                            Genre = e.Genre
+                            Genre = e.Genre,
                         }
                     );
                 return query.ToArray();
