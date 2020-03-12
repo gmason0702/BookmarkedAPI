@@ -1,0 +1,26 @@
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);
+    background-size: cover;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.form-group{
+    display: block;
+}
+p {
+    font: 36px bold 12px/30px Garamond, serif;
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 2.8rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+h2{
+    font-size:1rem;
+}

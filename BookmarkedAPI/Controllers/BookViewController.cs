@@ -1,4 +1,5 @@
 ﻿using Bookmarked.Models;
+using BookmarkedAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +42,9 @@ namespace BookmarkedAPI.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Create (BookListItem book)
+        public ActionResult Create(BookListItem book)
         {
             using (var client = new HttpClient())
             {
@@ -60,6 +62,7 @@ namespace BookmarkedAPI.Controllers
             ModelState.AddModelError(string.Empty, "Servor Error.");
             return View(book);
         }
+  
 
         public ActionResult Edit(int id)
         {
@@ -67,7 +70,7 @@ namespace BookmarkedAPI.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44371/api/");
-                var responseTask = client.GetAsync("Book?id=" + id.ToString());
+                var responseTask = client.PostAsJsonAsync("Book?id=" + id.ToString(), id);
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -100,6 +103,24 @@ namespace BookmarkedAPI.Controllers
                 }
             }
             return View(book);
+        }
+
+        public ActionResult Delete (int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44371/api/");
+
+                var deleteTask = client.DeleteAsync("book/" + id.ToString());
+                deleteTask.Wait();
+
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

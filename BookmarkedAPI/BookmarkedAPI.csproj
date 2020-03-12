@@ -213,6 +213,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountViewController.cs" />
     <Compile Include="Controllers\BookClubBookJoinController.cs" />
     <Compile Include="Controllers\BookClubController.cs" />
     <Compile Include="Controllers\BookController.cs" />
@@ -239,6 +240,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -396,6 +398,8 @@
     <Content Include="Views\BookView\Index.cshtml" />
     <Content Include="Views\BookView\create.cshtml" />
     <Content Include="Views\BookView\Edit.cshtml" />
+    <Content Include="Views\AccountView\createLogin.cshtml" />
+    <Content Include="Views\AccountView\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
