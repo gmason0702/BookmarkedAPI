@@ -54,6 +54,28 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        //public ICollection<UserBookClubJoin> GetUsersByBookClub(BookClub bookClub)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .UserBookClubJoins
+        //                .Where(e => e.Club == bookClub)
+        //                .Select(
+        //                    e =>
+        //                        new BookClubDetail
+        //                        {
+        //                            ReaderList = e
+        //                            BookClubId = e.BookClubId,
+        //                            Name = e.Name,
+        //                            CreatedUtc = e.CreatedUtc
+        //                        }
+        //                );
+
+        //        return query.ToArray();
+        //    }
+        //}
         public BookClubDetail GetBookClubById(int id)
         {
             using (var ctx = new ApplicationDbContext())

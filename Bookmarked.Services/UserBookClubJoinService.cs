@@ -37,23 +37,7 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        //public IEnumerable<UserBookClubJoinListItem> GetUserBookClub()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query = ctx
-        //            .UserBookClubJoins
-        //            .Where(e => e.OwnerId == _userId)
-        //            .Select(e => new UserBookClubJoinListItem
-        //            {
-        //                Id=e.Id,
-        //                ReaderId = e.ReaderId,                        
-        //            }
 
-        //                );
-        //        return query.ToArray();
-        //    }
-        //}
         public IEnumerable<UserBookClubDetail> GetUserBookClubDetails()
         {
             using (var ctx = new ApplicationDbContext())
@@ -110,7 +94,25 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public ICollection<BookClubUsers> GetUsersByBookClub(string bookClubName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .UserBookClubJoins
+                        .Where(e => e.BookClubName == bookClubName)
+                        .Select(
+                            e =>
+                                new BookClubUsers
+                                {
+                                    UserName = e.UserName,
+                                }
+                        );
 
+                return query.ToArray();
+            }
+        }
         public bool UpdateUserBookClubJoin(UserBookClubJoinEdit model)
         {
             using (var ctx = new ApplicationDbContext())

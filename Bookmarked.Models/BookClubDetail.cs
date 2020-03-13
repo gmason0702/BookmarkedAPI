@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bookmarked.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace Bookmarked.Models
         public int BookClubId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
+
     }
 }

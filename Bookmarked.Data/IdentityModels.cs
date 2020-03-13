@@ -25,6 +25,7 @@ namespace BookmarkedAPI.Data
         public string LastName { get; set; }
         public virtual ICollection<UserBookJoin> UserBookJoins { get; set; }
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -33,7 +34,7 @@ namespace BookmarkedAPI.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
