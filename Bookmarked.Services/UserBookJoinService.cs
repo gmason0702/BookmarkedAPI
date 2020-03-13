@@ -98,6 +98,25 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+
+        public IEnumerable<UserBookRating> GetAllRatingsByUser(string username)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .UserBookJoins
+                    .Where(e => e.UserName == username)
+                    .Select(e => new UserBookRating
+                    {
+                        UserName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
+                        BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
+                        Rating = e.Rating
+                    }
+                    );
+                return query.ToArray();
+            }
+        }
+
         public IEnumerable<UserBookDetail> GetAllUserBookDetails(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -121,13 +140,13 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<UserBookDetail> GetUserBookDetailsByUserName(string userName)
+        public IEnumerable<UserBookDetail> GetUserBookDetailsByUserName(string user)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
                     .UserBookJoins
-                    .Where(e => e.ReaderId == ctx.Users.FirstOrDefault(y => y.UserName == userName).Id)
+                    .Where(e => e.ReaderId == ctx.Users.FirstOrDefault(y => y.UserName == user).Id)
                     .Select(e => new UserBookDetail
                     {
                         Id = e.Id,

@@ -79,6 +79,7 @@
     <Compile Include="UserBookJoinCreate.cs" />
     <Compile Include="UserBookJoinEdit.cs" />
     <Compile Include="UserBookListItem.cs" />
+    <Compile Include="UserBookRating.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
