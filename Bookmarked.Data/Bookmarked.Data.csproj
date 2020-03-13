@@ -155,6 +155,10 @@
     <Compile Include="Migrations\202003121924550_FixedRatingCount.designer.cs">
       <DependentUpon>202003121924550_FixedRatingCount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003132027365_MinorChange.cs" />
+    <Compile Include="Migrations\202003132027365_MinorChange.designer.cs">
+      <DependentUpon>202003132027365_MinorChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -212,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003121924550_FixedRatingCount.resx">
       <DependentUpon>202003121924550_FixedRatingCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003132027365_MinorChange.resx">
+      <DependentUpon>202003132027365_MinorChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

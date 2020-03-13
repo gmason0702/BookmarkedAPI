@@ -154,12 +154,12 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool UpdateBook(BookUpdate modelUpdate)
+        public bool UpdateBook(string propertyValue, string bookName, string newValue)
         {
 
-            if (modelUpdate.PropertyValue == "Name")
+            if (propertyValue == "Name")
             {
-                var book = GetBookByName(modelUpdate.BookName);
+                var book = GetBookByName(bookName);
 
                 using (var ctx = new ApplicationDbContext())
                 {
@@ -167,38 +167,35 @@ namespace Bookmarked.Services
                         ctx
                         .Books
                         .Single(e => e.Id == book.Id);
-                    entity.Name = modelUpdate.NewValue;
-                    //entity.Author = book.Author;
-                    //entity.Genre = book.Genre;
-                    //entity.PublishedDate = book.PublishedDate;
+                    entity.Name = newValue;
 
                     return ctx.SaveChanges() == 1;
                 }
             }
-            else if (modelUpdate.PropertyValue == "Author")
+            else if (propertyValue == "Author")
             {
-                var book = GetBookByName(modelUpdate.BookName);
+                var book = GetBookByName(bookName);
                 using (var ctx = new ApplicationDbContext())
                 {
                     var entity =
                         ctx
                         .Books
                         .Single(e => e.Id == book.Id);
-                    entity.Author = modelUpdate.NewValue;
+                    entity.Author = newValue;
 
                     return ctx.SaveChanges() == 1;
                 }
             }
-            else if (modelUpdate.PropertyValue=="Genre")
+            else if (propertyValue=="Genre")
             {
-                var book = GetBookByName(modelUpdate.BookName);
+                var book = GetBookByName(bookName);
                 using (var ctx = new ApplicationDbContext())
                 {
                     var entity =
                         ctx
                         .Books
                         .Single(e => e.Id == book.Id);
-                    entity.Genre = modelUpdate.NewValue;
+                    entity.Genre = newValue;
 
                     return ctx.SaveChanges() == 1;
 
@@ -208,24 +205,24 @@ namespace Bookmarked.Services
 
         }
 
-        public bool UpdateBookGenre(string oldGenre, string newGenre)
-        {
-            var book = GetBookByName(oldGenre);
+        //public bool UpdateBookGenre(string oldGenre, string newGenre)//Unnecessary because method directly above can handle this need (Nick)
+        //{
+        //    var book = GetBookByName(oldGenre);
 
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Books
-                    .Single(e => e.Id == book.Id);
-                entity.Name = newGenre;
-                //entity.Author = book.Author;
-                //entity.Genre = book.Genre;
-                //entity.PublishedDate = book.PublishedDate;
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //            .Books
+        //            .Single(e => e.Id == book.Id);
+        //        entity.Name = newGenre;
+        //        //entity.Author = book.Author;
+        //        //entity.Genre = book.Genre;
+        //        //entity.PublishedDate = book.PublishedDate;
 
-                return ctx.SaveChanges() == 1;
-            }
-        }
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
         public bool DeleteBook(int bookId)
         {
             using (var ctx = new ApplicationDbContext())
