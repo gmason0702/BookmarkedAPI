@@ -25,6 +25,7 @@ namespace Bookmarked.Data
         [ForeignKey("BookId")]
         public virtual Book Book { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         public int Rating { get; set; }
     }
 }

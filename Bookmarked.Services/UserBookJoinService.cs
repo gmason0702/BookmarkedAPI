@@ -24,10 +24,11 @@ namespace Bookmarked.Services
             var entity = new UserBookJoin()
             {
 
-                UserName=model.UserName,
-                ReaderId=userId,
+                UserName = model.UserName,
+                ReaderId = userId,
                 OwnerId = _userId,
                 BookId = bookId,
+                BookName=model.BookName,
                 Rating = model.Rating,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
@@ -86,12 +87,12 @@ namespace Bookmarked.Services
                     {
                         Id = e.Id,
                         ReaderId = e.ReaderId,
-                        FirstName= ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).FirstName,
-                        LastName= ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).LastName,
-                        UserName= ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
+                        FirstName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).FirstName,
+                        LastName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).LastName,
+                        UserName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
                         BookId = e.BookId,
-                        BookName= ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
-                        Author= ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
+                        BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
+                        Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
                         Rating = e.Rating,
                     }
                         );
@@ -171,10 +172,13 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                     .UserBookJoins
-                    .Single(e => e.Id == model.Id);
+                    .Single(e => e.Id == model.JoinId);
+                entity.ReaderId = ctx.Users.FirstOrDefault(x => x.UserName == model.UserName).Id;
+                entity.BookId = ctx.Books.FirstOrDefault(y => y.Name == model.BookName).Id;
                 entity.UserName = model.UserName;
                 entity.BookName = model.BookName;
                 entity.Rating = model.Rating;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
