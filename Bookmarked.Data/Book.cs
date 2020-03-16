@@ -19,6 +19,7 @@ namespace Bookmarked.Data
         public string Author { get; set; }
         public string Genre { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         public DateTimeOffset PublishedDate { get; set; }
         public virtual ICollection<UserBookJoin> UserBookJoins { get; set; }
         public virtual ICollection<BookClubBookJoin> BookClubBookJoins { get; set; }//Added this 3/10 (Nick)

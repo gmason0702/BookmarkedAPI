@@ -27,6 +27,7 @@ namespace Bookmarked.Data
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
         public int Rating { get; set; }
+        public string Review { get; set; }
     }
 }
 

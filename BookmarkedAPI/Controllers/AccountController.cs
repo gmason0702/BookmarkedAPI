@@ -379,7 +379,7 @@ namespace BookmarkedAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email, Email = model.Email,CreatedUtc=DateTimeOffset.Now };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
