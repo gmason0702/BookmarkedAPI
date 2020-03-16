@@ -47,6 +47,8 @@ namespace Bookmarked.Services
                                 {
                                     BookClubId = e.BookClubId,
                                     Name = e.Name,
+                                    Description=e.Description,
+                                    BookName=ctx.Books.FirstOrDefault(s=>s.Id==ctx.BookClubBookJoins.FirstOrDefault(j=>j.BookClubId==e.BookClubId).BookId).Name,
                                     CreatedUtc = e.CreatedUtc
                                 }
                         );
@@ -54,6 +56,28 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        //public ICollection<UserBookClubJoin> GetUsersByBookClub(BookClub bookClub)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .UserBookClubJoins
+        //                .Where(e => e.Club == bookClub)
+        //                .Select(
+        //                    e =>
+        //                        new BookClubDetail
+        //                        {
+        //                            ReaderList = e
+        //                            BookClubId = e.BookClubId,
+        //                            Name = e.Name,
+        //                            CreatedUtc = e.CreatedUtc
+        //                        }
+        //                );
+
+        //        return query.ToArray();
+        //    }
+        //}
         public BookClubDetail GetBookClubById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -99,6 +123,7 @@ namespace Bookmarked.Services
                     .Single(e => e.BookClubId == model.BookClubId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }

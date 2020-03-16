@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Bookmarked.Data
 {
     public class UserBookJoin
-    {       
+    {
         [Key]
-        public int Id { get; set; }      
+        public int Id { get; set; }
         public string UserName { get; set; }//I don't think this is necessary because the Username exists in the ApplicationUser object (Nick)
         public Guid OwnerId { get; set; }//Should this be a Guid? I think Id is stored as a string in ApplicaitonUser 
         //- so maybe this can be string too - it would need to be changed lots of places (Nick)
@@ -25,6 +25,13 @@ namespace Bookmarked.Data
         [ForeignKey("BookId")]
         public virtual Book Book { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         public int Rating { get; set; }
+        public string Review { get; set; }
     }
 }
+
+
+
+
+

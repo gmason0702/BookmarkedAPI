@@ -26,9 +26,10 @@ namespace Bookmarked.Services
             {
                 OwnerId = _userId,
                 BookClubId = bookClubId,
-                BookId=bookId,
+                BookId = bookId,
                 BookClubName = model.BookClubName,
                 BookName = model.BookName,
+                CreatedUtc = DateTimeOffset.Now
             };
             using (ctx)
             {
@@ -60,21 +61,24 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                     .BookClubBookJoins
-                    .Single(e => e.Id == model.Id);
+                    .Single(e => e.Id == model.JoinId);
+                entity.BookId= ctx.Books.FirstOrDefault(x => x.Name == model.BookName).Id;
                 entity.BookName = model.BookName;
+                entity.BookClubId= ctx.BookClubs.FirstOrDefault(x => x.Name == model.BookClubName).BookClubId;
                 entity.BookClubName = model.BookClubName;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteBookClubBookJoin(int bookId)
+        public bool DeleteBookClubBookJoin(int joinId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .BookClubBookJoins
-                    .Single(e => e.Id == bookId);
+                    .Single(e => e.Id == joinId);
                 ctx.BookClubBookJoins.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

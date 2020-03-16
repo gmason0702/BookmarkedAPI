@@ -22,6 +22,7 @@ namespace Bookmarked.Services
             var ctx = new ApplicationDbContext();
             int bookClubId = ctx.BookClubs.Single(e => e.Name == model.BookClubName).BookClubId;
             string userId = ctx.Users.Single(e => e.UserName == model.UserName).Id;
+            string description = ctx.BookClubs.Single(e => e.Name == model.BookClubName).Description;
             var entity = new UserBookClubJoin()
             {
                 OwnerId = _userId,
@@ -29,7 +30,8 @@ namespace Bookmarked.Services
                 ReaderId = userId,
                 BookClubId = bookClubId,
                 BookClubName = model.BookClubName,
-                CreatedUtc = DateTimeOffset.UtcNow
+                CreatedUtc = DateTimeOffset.UtcNow,
+                Description = description
             };
             using (ctx)
             {
@@ -37,23 +39,7 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        //public IEnumerable<UserBookClubJoinListItem> GetUserBookClub()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query = ctx
-        //            .UserBookClubJoins
-        //            .Where(e => e.OwnerId == _userId)
-        //            .Select(e => new UserBookClubJoinListItem
-        //            {
-        //                Id=e.Id,
-        //                ReaderId = e.ReaderId,                        
-        //            }
 
-        //                );
-        //        return query.ToArray();
-        //    }
-        //}
         public IEnumerable<UserBookClubDetail> GetUserBookClubDetails()
         {
             using (var ctx = new ApplicationDbContext())
@@ -110,7 +96,25 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public ICollection<BookClubUsers> GetUsersByBookClub(string bookClubName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .UserBookClubJoins
+                        .Where(e => e.BookClubName == bookClubName)
+                        .Select(
+                            e =>
+                                new BookClubUsers
+                                {
+                                    UserName = e.UserName,
+                                }
+                        );
 
+                return query.ToArray();
+            }
+        }
         public bool UpdateUserBookClubJoin(UserBookClubJoinEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -118,9 +122,14 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                     .UserBookClubJoins
-                    .Single(e => e.Id == model.Id);
+                    .Single(e => e.Id == model.JoinId);
+                entity.ReaderId = ctx.Users.FirstOrDefault(x => x.UserName == model.UserName).Id;
+                entity.BookClubId = ctx.BookClubs.FirstOrDefault(y => y.Name == model.BookClubName).BookClubId;
                 entity.UserName = model.UserName;
                 entity.BookClubName = model.BookClubName;
+                entity.Description = ctx.BookClubs.FirstOrDefault(z => z.BookClubId == 
+                ctx.BookClubs.FirstOrDefault(y => y.Name == model.BookClubName).BookClubId).Description;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }

@@ -44,10 +44,10 @@ namespace BookmarkedAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Delete(int Id)
+        public IHttpActionResult Delete(int joinId)
         {
             var service = CreateBookClubBookJoinService();
-            if (!service.DeleteBookClubBookJoin(Id))
+            if (!service.DeleteBookClubBookJoin(joinId))
                 return InternalServerError();
 
             return Ok();

@@ -63,6 +63,7 @@
     <Compile Include="BookClubDetail.cs" />
     <Compile Include="BookClubEdit.cs" />
     <Compile Include="BookClubListItem.cs" />
+    <Compile Include="BookClubUsers.cs" />
     <Compile Include="BookCreate.cs" />
     <Compile Include="BookDetail.cs" />
     <Compile Include="BookEdit.cs" />
@@ -78,6 +79,9 @@
     <Compile Include="UserBookJoinCreate.cs" />
     <Compile Include="UserBookJoinEdit.cs" />
     <Compile Include="UserBookListItem.cs" />
+    <Compile Include="UserBookRating.cs" />
+    <Compile Include="UserDetail.cs" />
+    <Compile Include="UserEdit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

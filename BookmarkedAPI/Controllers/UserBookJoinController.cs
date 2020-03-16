@@ -26,13 +26,6 @@ namespace BookmarkedAPI.Controllers
             var bookJoin = userBookJoinService.GetUserBookDetails();
             return Ok(bookJoin);
         }
-        public IHttpActionResult GetDetailsByUserName(string userName)
-        {
-            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
-            var bookJoin = userBookJoinService.GetUserBookDetailsByUserName(userName);
-            return Ok(bookJoin);
-        }
-
 
         //public IHttpActionResult GetAll(int id)//commenting out for now because you can only have on get - probably don't need this
         //{
@@ -48,6 +41,19 @@ namespace BookmarkedAPI.Controllers
             return Ok(bookJoin);
         }
 
+        public IHttpActionResult GetAllUserRatings(string user)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetAllRatingsByUser(user);
+            return Ok(bookJoin);
+        }
+
+        public IHttpActionResult GetDetailsByUserName(string userName)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetUserBookDetailsByUserName(userName);
+            return Ok(bookJoin);
+        }
 
         public IHttpActionResult Post(UserBookJoinCreate bookjoin)
         {
