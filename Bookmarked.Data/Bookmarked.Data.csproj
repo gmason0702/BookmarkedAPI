@@ -159,6 +159,14 @@
     <Compile Include="Migrations\202003132027365_MinorChange.designer.cs">
       <DependentUpon>202003132027365_MinorChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003161513497_AddedModifiedUtcToUserBookJoin.cs" />
+    <Compile Include="Migrations\202003161513497_AddedModifiedUtcToUserBookJoin.designer.cs">
+      <DependentUpon>202003161513497_AddedModifiedUtcToUserBookJoin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003161532569_AddedModifiedUtcToUserBookClubJoin.cs" />
+    <Compile Include="Migrations\202003161532569_AddedModifiedUtcToUserBookClubJoin.designer.cs">
+      <DependentUpon>202003161532569_AddedModifiedUtcToUserBookClubJoin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBookClubJoin.cs" />
@@ -219,6 +227,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003132027365_MinorChange.resx">
       <DependentUpon>202003132027365_MinorChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003161513497_AddedModifiedUtcToUserBookJoin.resx">
+      <DependentUpon>202003161513497_AddedModifiedUtcToUserBookJoin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003161532569_AddedModifiedUtcToUserBookClubJoin.resx">
+      <DependentUpon>202003161532569_AddedModifiedUtcToUserBookClubJoin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

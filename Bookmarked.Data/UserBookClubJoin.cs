@@ -26,5 +26,6 @@ namespace Bookmarked.Data
         public virtual BookClub Club { get; set; }
         public string Description { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
