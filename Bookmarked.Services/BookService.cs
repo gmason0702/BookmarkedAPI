@@ -25,6 +25,7 @@ namespace Bookmarked.Services
                     OwnerId = _userId,
                     Author = model.Author,
                     Genre = model.Genre,
+                    PublishedDate=model.PublishedDate,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
@@ -150,6 +151,7 @@ namespace Bookmarked.Services
                 entity.Author = modelEdit.Author;
                 entity.Genre = modelEdit.Genre;
                 entity.PublishedDate = modelEdit.PublishedDate;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -168,6 +170,7 @@ namespace Bookmarked.Services
                         .Books
                         .Single(e => e.Id == book.Id);
                     entity.Name = newValue;
+                    entity.ModifiedUtc = DateTimeOffset.Now;
 
                     return ctx.SaveChanges() == 1;
                 }
@@ -182,6 +185,7 @@ namespace Bookmarked.Services
                         .Books
                         .Single(e => e.Id == book.Id);
                     entity.Author = newValue;
+                    entity.ModifiedUtc = DateTimeOffset.Now;
 
                     return ctx.SaveChanges() == 1;
                 }
@@ -196,6 +200,7 @@ namespace Bookmarked.Services
                         .Books
                         .Single(e => e.Id == book.Id);
                     entity.Genre = newValue;
+                    entity.ModifiedUtc = DateTimeOffset.Now;
 
                     return ctx.SaveChanges() == 1;
 
@@ -231,6 +236,18 @@ namespace Bookmarked.Services
                     ctx
                     .Books
                     .Single(e => e.Id == bookId);
+                ctx.Books.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteBookByName(string bookName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.Name == bookName);
                 ctx.Books.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

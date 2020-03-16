@@ -104,6 +104,14 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult DeleteByName(string bookName)
+        {
+            var service = CreateBookService();
+            if (!service.DeleteBookByName(bookName))
+                return InternalServerError();
+
+            return Ok();
+        }
 
         private BookService CreateBookService()
         {

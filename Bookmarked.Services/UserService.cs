@@ -69,6 +69,7 @@ namespace Bookmarked.Services
                 entity.LastName = modelEdit.LastName;
                 entity.Email = modelEdit.Email;
                 entity.UserName = modelEdit.UserName;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }

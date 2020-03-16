@@ -24,6 +24,8 @@ namespace Bookmarked.Data
         [ForeignKey("BookClubId")]
         public virtual BookClub BookClub { get; set; }
         public string BookClubName { get; set; }//I don't think this is necessary because BookClubName exists in the BookClub Object (Nick)
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
 
     }
 }

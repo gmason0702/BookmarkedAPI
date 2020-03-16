@@ -30,6 +30,7 @@ namespace Bookmarked.Services
                 BookId = bookId,
                 BookName=model.BookName,
                 Rating = model.Rating,
+                Review=model.Review,
                 CreatedUtc = DateTimeOffset.UtcNow
             };
             using (ctx)
@@ -94,6 +95,7 @@ namespace Bookmarked.Services
                         BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
                         Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
                         Rating = e.Rating,
+                        Review = e.Review,
                     }
                         );
                 return query.ToArray();
@@ -111,7 +113,8 @@ namespace Bookmarked.Services
                     {
                         UserName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
                         BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
-                        Rating = e.Rating
+                        Rating = e.Rating,
+                        Review = e.Review,
                     }
                     );
                 return query.ToArray();
@@ -135,6 +138,7 @@ namespace Bookmarked.Services
                         BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
                         Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
                         Rating = e.Rating,
+                        Review = e.Review
                     }
                         );
                 return query.ToArray();
@@ -158,6 +162,7 @@ namespace Bookmarked.Services
                         BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
                         Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
                         Rating = e.Rating,
+                        Review = e.Review
                     }
                         );
                 return query.ToArray();
@@ -178,6 +183,7 @@ namespace Bookmarked.Services
                 entity.UserName = model.UserName;
                 entity.BookName = model.BookName;
                 entity.Rating = model.Rating;
+                entity.Review = model.Review;
                 entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
