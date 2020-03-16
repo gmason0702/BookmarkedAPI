@@ -80,6 +80,8 @@
     <Compile Include="UserBookJoinEdit.cs" />
     <Compile Include="UserBookListItem.cs" />
     <Compile Include="UserBookRating.cs" />
+    <Compile Include="UserDetail.cs" />
+    <Compile Include="UserEdit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -19,6 +19,7 @@ using BookmarkedAPI.Results;
 using BookmarkedAPI.Data;
 using Bookmarked.Services;
 using System.Linq;
+using Bookmarked.Models;
 
 namespace BookmarkedAPI.Controllers
 {
@@ -50,6 +51,50 @@ namespace BookmarkedAPI.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public IHttpActionResult Get()
+        {
+            UserService userService = CreateUserService();
+            var users = userService.GetUsers();
+            return Ok(users);
+        }
+
+        public IHttpActionResult GetByUserName(string userName)
+        {
+            UserService userService = CreateUserService();
+            var user = userService.GetUserByUserName(userName);
+            return Ok(user);
+        }
+
+        public IHttpActionResult Put(UserEdit modelEdit)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateUserService();
+
+            if (!service.EditUser(modelEdit))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+
+        public IHttpActionResult Delete(string userName)
+        {
+            var service = CreateUserService();
+            if (!service.DeleteUser(userName))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        private UserService CreateUserService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userService = new UserService(userId);
+            return userService;
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
