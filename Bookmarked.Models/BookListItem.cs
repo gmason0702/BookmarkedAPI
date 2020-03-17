@@ -14,6 +14,8 @@ namespace Bookmarked.Models
         public string Name { get; set; }
         public string Author { get; set; }
         public string Genre { get; set; }
+        public ICollection<UserBookJoin> UserBookJoins { get; set; }//just for now
+
         public double? AvgRating
         {
             get

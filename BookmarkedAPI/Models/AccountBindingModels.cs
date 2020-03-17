@@ -13,6 +13,20 @@ namespace BookmarkedAPI.Models
         public string ExternalAccessToken { get; set; }
     }
 
+    public class ClientLoginBindingModel
+    {
+        [Required]
+        [Display(Name ="User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name ="Would you like to maintain this session?")]
+        public bool MaintainSession { get; set; }
+    }
+
     public class ChangePasswordBindingModel
     {
         [Required]

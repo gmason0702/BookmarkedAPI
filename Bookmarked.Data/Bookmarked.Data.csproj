@@ -139,6 +139,17 @@
     <Compile Include="Migrations\202003101420349_fixing add migrations.designer.cs">
       <DependentUpon>202003101420349_fixing add migrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003121509371_AddedAvgRatingToBookClass.cs" />
+    <Compile Include="Migrations\202003121509371_AddedAvgRatingToBookClass.designer.cs">
+      <DependentUpon>202003121509371_AddedAvgRatingToBookClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003121637356_AddedRatingGetter.cs" />
+    <Compile Include="Migrations\202003121637356_AddedRatingGetter.designer.cs">
+      <DependentUpon>202003121637356_AddedRatingGetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003121952399_AddBookToBookClub.cs" />
+    <Compile Include="Migrations\202003121952399_AddBookToBookClub.designer.cs">
+      <DependentUpon>202003121952399_AddBookToBookClub.cs</DependentUpon>
     <Compile Include="Migrations\202003111835505_FixingDataBase.cs" />
     <Compile Include="Migrations\202003111835505_FixingDataBase.designer.cs">
       <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
@@ -177,6 +188,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Token.cs" />
     <Compile Include="UserBookClubJoin.cs" />
     <Compile Include="UserBookJoin.cs" />
   </ItemGroup>
@@ -221,6 +233,14 @@
     <EmbeddedResource Include="Migrations\202003101420349_fixing add migrations.resx">
       <DependentUpon>202003101420349_fixing add migrations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003121509371_AddedAvgRatingToBookClass.resx">
+      <DependentUpon>202003121509371_AddedAvgRatingToBookClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003121637356_AddedRatingGetter.resx">
+      <DependentUpon>202003121637356_AddedRatingGetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003121952399_AddBookToBookClub.resx">
+      <DependentUpon>202003121952399_AddBookToBookClub.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\202003111835505_FixingDataBase.resx">
       <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
     </EmbeddedResource>

@@ -138,6 +138,8 @@ namespace Bookmarked.Services
                 return entity.ToArray();
             }
         }
+
+
         public bool EditBook(BookEdit modelEdit)
         {
 
@@ -209,6 +211,8 @@ namespace Bookmarked.Services
             return false;
 
         }
+
+        //public bool UpdateBookGenre(string oldGenre, string newGenre)
 
         //public bool UpdateBookGenre(string oldGenre, string newGenre)//Unnecessary because method directly above can handle this need (Nick)
         //{

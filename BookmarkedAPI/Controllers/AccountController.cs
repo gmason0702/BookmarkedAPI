@@ -111,7 +111,6 @@ namespace BookmarkedAPI.Controllers
             {
 
                 Email = User.Identity.GetUserName(),
-                //Book = ctx.Users.Single(e=>e.UserBookJoins.
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
