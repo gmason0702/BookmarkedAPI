@@ -134,6 +134,7 @@ namespace BookmarkedAPI.Controllers
                 userId = Guid.Parse(User.Identity.GetUserId());
             }
             var bookService = new BookService(userId);
+            //var bookService = new BookService(Guid.NewGuid());
            
             return bookService;
         }
