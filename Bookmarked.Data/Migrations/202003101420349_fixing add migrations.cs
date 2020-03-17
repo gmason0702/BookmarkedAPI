@@ -47,7 +47,6 @@
     //        DropTable("dbo.BookClubBookJoin");
     //    }
    // }
-}
 
     //public partial class fixingaddmigrations : DbMigration
    // {
