@@ -1,4 +1,5 @@
-﻿using Bookmarked.Models;
+﻿using Bookmarked.Data;
+using Bookmarked.Models;
 using Bookmarked.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -14,11 +15,35 @@ namespace BookmarkedAPI.Controllers
     public class UserBookClubJoinController : ApiController
     {
         //GET METHOD
-        public IHttpActionResult Get()
+        //public IHttpActionResult Get()
+        //{
+        //    UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
+        //    var bookClubJoin = userBookClubJoinService.GetUserBookClub();
+        //    return Ok(bookClubJoin);
+        //}
+        public IHttpActionResult GetDetails()
         {
             UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
-            var bookClubJoin = userBookClubJoinService.GetUserBookClub();
-            return Ok(bookClubJoin);
+            var userBookClubJoin = userBookClubJoinService.GetUserBookClubDetails();
+            return Ok(userBookClubJoin);
+        }
+        public IHttpActionResult GetAllDetails(int id)
+        {
+            UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
+            var userBookClubJoin = userBookClubJoinService.GetAllUserBookClubDetails(id);
+            return Ok(userBookClubJoin);
+        }
+        public IHttpActionResult GetAllBookClubsOfUser(string userName)
+        {
+            UserBookClubJoinService userBookClubService = CreateUserBookClubJoinService();
+            var userBookClubJoin = userBookClubService.GetAllBookClubsOfUser(userName);
+            return Ok(userBookClubJoin);
+        }
+        public IHttpActionResult GetUsersByBookClub(string bookClubName)
+        {
+            UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
+            var userBookClubJoin = userBookClubJoinService.GetUsersByBookClub(bookClubName);
+            return Ok(userBookClubJoin);
         }
         public IHttpActionResult Post(UserBookClubJoinCreate bookClubjoin)
         {
