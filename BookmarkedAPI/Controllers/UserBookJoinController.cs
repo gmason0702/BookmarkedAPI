@@ -48,6 +48,7 @@ namespace BookmarkedAPI.Controllers
             return Ok(bookJoin);
         }
 
+
         public IHttpActionResult GetDetailsByUserName(string userName)
         {
             UserBookJoinService userBookJoinService = CreateUserBookJoinService();

@@ -145,6 +145,7 @@ namespace Bookmarked.Services
             }
         }
 
+
         public IEnumerable<UserBookDetail> GetUserBookDetailsByBookName(string bookName)
         {
             using (var ctx = new ApplicationDbContext())
