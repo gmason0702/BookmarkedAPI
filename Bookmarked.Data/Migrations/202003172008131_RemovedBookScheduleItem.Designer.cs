@@ -7,13 +7,13 @@ namespace Bookmarked.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class FixedBookClubDetailScheduledBookNameProperty : IMigrationMetadata
+    public sealed partial class RemovedBookScheduleItem : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixedBookClubDetailScheduledBookNameProperty));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedBookScheduleItem));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003170158140_FixedBookClubDetailScheduledBookNameProperty"; }
+            get { return "202003172008131_RemovedBookScheduleItem"; }
         }
         
         string IMigrationMetadata.Source

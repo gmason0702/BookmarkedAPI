@@ -19,19 +19,22 @@ namespace Bookmarked.Services
         public bool CreateSchedule(ScheduleCreate model)
         {
             var ctx = new ApplicationDbContext();
-            int scheduleItemId = ctx.BookScheduleItems.Single(e => e.ScheduleItemTitle == model.ScheduleItemTitle).ScheduleItemId;
+            //int scheduleItemId = ctx.BookScheduleItems.Single(e => e.ScheduleItemTitle == model.ScheduleItemTitle).ScheduleItemId;
             int bookClubId = ctx.BookClubs.Single(e => e.Name == model.BookClubName).BookClubId;
             int bookId = ctx.Books.Single(e => e.Name == model.BookName).Id;
             var entity = new Schedule()
             {
                 OwnerId = _userId,
                 ScheduleName = model.ScheduleName,
-                ScheduleItemTitle = model.ScheduleItemTitle,
-                ScheduleItemId = scheduleItemId,
+                //ScheduleItemTitle = model.ScheduleItemTitle,
+                //ScheduleItemId = scheduleItemId,
                 BookClubName = model.BookClubName,
                 BookClubId = bookClubId,
                 BookName = model.BookName,
                 BookId = bookId,
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
+
             };
             using (ctx)
             {
@@ -51,12 +54,40 @@ namespace Bookmarked.Services
                     new ScheduleDetail
                     {
                         Id = entity.Id,
-                        ScheduleItemTitle = entity.ScheduleItemTitle,
+                        //ScheduleItemTitle = entity.ScheduleItemTitle,
                         BookName = entity.BookName,
                         BookClubName = entity.BookClubName,
-                        StartDate = entity.ScheduleItem.StartDate,
-                        EndDate = entity.ScheduleItem.EndDate,
+                        //StartDate = entity.ScheduleItem.StartDate,
+                        //EndDate = entity.ScheduleItem.EndDate,
+                        StartDate = entity.StartDate,
+                        EndDate = entity.EndDate,
                     };
+            }
+        }
+        public bool UpdateScheduleByName(ScheduleEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Schedules
+                    .Single(e => e.ScheduleName == model.ScheduleName);
+                entity.BookName = model.BookName;
+                entity.BookClubName = model.BookClubName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteScheduleByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Schedules
+                    .Single(e => e.ScheduleName == name);
+                ctx.Schedules.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

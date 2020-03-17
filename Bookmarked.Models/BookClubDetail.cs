@@ -20,15 +20,18 @@ namespace Bookmarked.Models
                 using (var ctx = new ApplicationDbContext())
                 {
                     DateTimeOffset now = DateTimeOffset.Now;
-                    string scheduledBookName = null;
                     foreach (Schedule schedule in ctx.Schedules)
                     {
-                        if (schedule.ScheduleItem.StartDate <= now && now <= schedule.ScheduleItem.EndDate)
+                        while (schedule.BookClubId == BookClubId)
                         {
-                            scheduledBookName = schedule.Book.Name;
+                            if (schedule.StartDate <= now && now <= schedule.EndDate)
+                            {
+                                string scheduledBookName = schedule.Book.Name;
+                                return scheduledBookName;
+                            }
                         }
                     }
-                    return scheduledBookName;
+                    return null;
                 }
             }
         }

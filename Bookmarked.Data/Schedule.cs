@@ -12,10 +12,10 @@ namespace Bookmarked.Data
         public int Id { get; set; }
         public Guid OwnerId { get; set; }
         public string ScheduleName { get; set; }
-        public string ScheduleItemTitle { get; set; }
-        public int ScheduleItemId { get; set; }
-        [ForeignKey("ScheduleItemId")]
-        public virtual BookScheduleItem ScheduleItem { get; set; }
+        //public string ScheduleItemTitle { get; set; }
+        //public int ScheduleItemId { get; set; }
+        //[ForeignKey("ScheduleItemId")]
+        //public virtual BookScheduleItem ScheduleItem { get; set; }
         public string BookName { get; set; }
         public int BookId { get; set; }
         [ForeignKey("BookId")]
@@ -24,5 +24,8 @@ namespace Bookmarked.Data
         public int BookClubId { get; set; }
         [ForeignKey("BookClubId")]
         public virtual BookClub BookClub { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset EndDate { get; set; }
+
     }
 }

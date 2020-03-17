@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookmarkedAPI.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace Bookmarked.Data
     public class BookClub
     {
         [Key]
-        
+
         public int BookClubId { get; set; }
         public Guid OwnerId { get; set; }//Should this be a Guid? I think Id is stored as a string in ApplicaitonUser 
         //- so maybe this can be string too - it would need to be changed lots of places (Nick)
@@ -23,6 +24,7 @@ namespace Bookmarked.Data
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
-
+        public virtual ICollection<Schedule> Schedule { get; set; }
     }
 }
+

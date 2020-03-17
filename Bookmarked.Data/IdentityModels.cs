@@ -44,7 +44,6 @@ namespace BookmarkedAPI.Data
         public DbSet<UserBookClubJoin> UserBookClubJoins { get; set; }
         public DbSet<UserBookJoin> UserBookJoins { get; set; }
         public DbSet<BookClubBookJoin> BookClubBookJoins { get; set; }
-        public DbSet<BookScheduleItem> BookScheduleItems { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         //public DbSet<ApplicationUser> ApplicationUser { get; set; }//Not sure if this is needed//commenting out for now,
         //this dbset might live somewhere else -it's actually right above - "public class ApplicaitonDbContext:IdentityDbContext<ApplicationUser>"

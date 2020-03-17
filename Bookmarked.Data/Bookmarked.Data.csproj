@@ -90,71 +90,10 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookClub.cs" />
     <Compile Include="BookClubBookJoin.cs" />
-    <Compile Include="BookScheduleItem.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202003051948544_SecondMigration.cs" />
-    <Compile Include="Migrations\202003051948544_SecondMigration.Designer.cs">
-      <DependentUpon>202003051948544_SecondMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003061331099_thirdmigration.cs" />
-    <Compile Include="Migrations\202003061331099_thirdmigration.Designer.cs">
-      <DependentUpon>202003061331099_thirdmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003061540564_ConfigurationTest.cs" />
-    <Compile Include="Migrations\202003061540564_ConfigurationTest.Designer.cs">
-      <DependentUpon>202003061540564_ConfigurationTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003061635213_ConfigurationTestWithUsers.cs" />
-    <Compile Include="Migrations\202003061635213_ConfigurationTestWithUsers.Designer.cs">
-      <DependentUpon>202003061635213_ConfigurationTestWithUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003061718206_UpdatedGuidTypes.cs" />
-    <Compile Include="Migrations\202003061718206_UpdatedGuidTypes.Designer.cs">
-      <DependentUpon>202003061718206_UpdatedGuidTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003061727002_MoreGuidUpdates.cs" />
-    <Compile Include="Migrations\202003061727002_MoreGuidUpdates.Designer.cs">
-      <DependentUpon>202003061727002_MoreGuidUpdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003091456097_UserBookJoinCreationBuildout.cs" />
-    <Compile Include="Migrations\202003091456097_UserBookJoinCreationBuildout.Designer.cs">
-      <DependentUpon>202003091456097_UserBookJoinCreationBuildout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003091511287_UserBookJoinCreationBuildoutConfigTest.cs" />
-    <Compile Include="Migrations\202003091511287_UserBookJoinCreationBuildoutConfigTest.Designer.cs">
-      <DependentUpon>202003091511287_UserBookJoinCreationBuildoutConfigTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003091530276_fixingRatingHopefully.cs" />
-    <Compile Include="Migrations\202003091530276_fixingRatingHopefully.Designer.cs">
-      <DependentUpon>202003091530276_fixingRatingHopefully.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003091723433_updatedMigrationCreateUserBookClubJoin.cs" />
-    <Compile Include="Migrations\202003091723433_updatedMigrationCreateUserBookClubJoin.designer.cs">
-      <DependentUpon>202003091723433_updatedMigrationCreateUserBookClubJoin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003092050169_AddedBookClubBookJoinLogic.cs" />
-    <Compile Include="Migrations\202003092050169_AddedBookClubBookJoinLogic.designer.cs">
-      <DependentUpon>202003092050169_AddedBookClubBookJoinLogic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003101420349_fixing add migrations.cs" />
-    <Compile Include="Migrations\202003101420349_fixing add migrations.designer.cs">
-      <DependentUpon>202003101420349_fixing add migrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003111835505_FixingDataBase.cs" />
-    <Compile Include="Migrations\202003111835505_FixingDataBase.designer.cs">
-      <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003170115182_AddedBookScheduleItemAndSchedule.cs" />
-    <Compile Include="Migrations\202003170115182_AddedBookScheduleItemAndSchedule.designer.cs">
-      <DependentUpon>202003170115182_AddedBookScheduleItemAndSchedule.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003170130335_FixedGaveBookClubBookId.cs" />
-    <Compile Include="Migrations\202003170130335_FixedGaveBookClubBookId.designer.cs">
-      <DependentUpon>202003170130335_FixedGaveBookClubBookId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003170158140_FixedBookClubDetailScheduledBookNameProperty.cs" />
-    <Compile Include="Migrations\202003170158140_FixedBookClubDetailScheduledBookNameProperty.designer.cs">
-      <DependentUpon>202003170158140_FixedBookClubDetailScheduledBookNameProperty.cs</DependentUpon>
+    <Compile Include="Migrations\202003172008131_RemovedBookScheduleItem.cs" />
+    <Compile Include="Migrations\202003172008131_RemovedBookScheduleItem.designer.cs">
+      <DependentUpon>202003172008131_RemovedBookScheduleItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,58 +106,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003051948544_SecondMigration.resx">
-      <DependentUpon>202003051948544_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003061331099_thirdmigration.resx">
-      <DependentUpon>202003061331099_thirdmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003061540564_ConfigurationTest.resx">
-      <DependentUpon>202003061540564_ConfigurationTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003061635213_ConfigurationTestWithUsers.resx">
-      <DependentUpon>202003061635213_ConfigurationTestWithUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003061718206_UpdatedGuidTypes.resx">
-      <DependentUpon>202003061718206_UpdatedGuidTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003061727002_MoreGuidUpdates.resx">
-      <DependentUpon>202003061727002_MoreGuidUpdates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003091456097_UserBookJoinCreationBuildout.resx">
-      <DependentUpon>202003091456097_UserBookJoinCreationBuildout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003091511287_UserBookJoinCreationBuildoutConfigTest.resx">
-      <DependentUpon>202003091511287_UserBookJoinCreationBuildoutConfigTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003091530276_fixingRatingHopefully.resx">
-      <DependentUpon>202003091530276_fixingRatingHopefully.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003091723433_updatedMigrationCreateUserBookClubJoin.resx">
-      <DependentUpon>202003091723433_updatedMigrationCreateUserBookClubJoin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003092050169_AddedBookClubBookJoinLogic.resx">
-      <DependentUpon>202003092050169_AddedBookClubBookJoinLogic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003101420349_fixing add migrations.resx">
-      <DependentUpon>202003101420349_fixing add migrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003111835505_FixingDataBase.resx">
-      <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003170115182_AddedBookScheduleItemAndSchedule.resx">
-      <DependentUpon>202003170115182_AddedBookScheduleItemAndSchedule.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003170130335_FixedGaveBookClubBookId.resx">
-      <DependentUpon>202003170130335_FixedGaveBookClubBookId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003170158140_FixedBookClubDetailScheduledBookNameProperty.resx">
-      <DependentUpon>202003170158140_FixedBookClubDetailScheduledBookNameProperty.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Scripts\knockout-3.5.1.debug.js" />
     <Content Include="Scripts\knockout-3.5.1.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003172008131_RemovedBookScheduleItem.resx">
+      <DependentUpon>202003172008131_RemovedBookScheduleItem.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

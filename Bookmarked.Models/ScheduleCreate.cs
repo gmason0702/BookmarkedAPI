@@ -9,8 +9,10 @@ namespace Bookmarked.Models
     public class ScheduleCreate
     {
         public string ScheduleName { get; set; }
-        public string ScheduleItemTitle { get; set; }
+        //public string ScheduleItemTitle { get; set; }
         public string BookName { get; set; }
         public string BookClubName { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset EndDate { get; set; }
     }
 }

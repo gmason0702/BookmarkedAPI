@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookClubBookJoinService.cs" />
-    <Compile Include="BookScheduleItemService.cs" />
     <Compile Include="BookService.cs" />
     <Compile Include="BookClubService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -28,7 +28,28 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Put(ScheduleEdit schedule)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateScheduleService();
 
+            if (!service.UpdateScheduleByName(schedule))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(string name)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateScheduleService();
+
+            if (!service.DeleteScheduleByName(name))
+                return InternalServerError();
+
+            return Ok();
+        }
         private ScheduleService CreateScheduleService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
