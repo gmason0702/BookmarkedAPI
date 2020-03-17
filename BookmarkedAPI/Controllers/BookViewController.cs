@@ -83,6 +83,7 @@ namespace BookmarkedAPI.Controllers
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
+
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -94,6 +95,8 @@ namespace BookmarkedAPI.Controllers
                     book = readTask.Result;
 
                 }
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+
             }
             return View(book);
         }

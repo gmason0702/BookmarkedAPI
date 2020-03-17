@@ -74,6 +74,7 @@ namespace BookmarkedAPI.Controllers
         public IHttpActionResult Put(BookEdit modelEdit)
         {
             if (!ModelState.IsValid)
+
                 return BadRequest(ModelState);
 
             var service = CreateBookService();
