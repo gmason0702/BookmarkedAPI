@@ -19,15 +19,12 @@ namespace Bookmarked.Services
         public bool CreateSchedule(ScheduleCreate model)
         {
             var ctx = new ApplicationDbContext();
-            //int scheduleItemId = ctx.BookScheduleItems.Single(e => e.ScheduleItemTitle == model.ScheduleItemTitle).ScheduleItemId;
             int bookClubId = ctx.BookClubs.Single(e => e.Name == model.BookClubName).BookClubId;
             int bookId = ctx.Books.Single(e => e.Name == model.BookName).Id;
             var entity = new Schedule()
             {
                 OwnerId = _userId,
                 ScheduleName = model.ScheduleName,
-                //ScheduleItemTitle = model.ScheduleItemTitle,
-                //ScheduleItemId = scheduleItemId,
                 BookClubName = model.BookClubName,
                 BookClubId = bookClubId,
                 BookName = model.BookName,
@@ -54,11 +51,8 @@ namespace Bookmarked.Services
                     new ScheduleDetail
                     {
                         Id = entity.Id,
-                        //ScheduleItemTitle = entity.ScheduleItemTitle,
                         BookName = entity.BookName,
                         BookClubName = entity.BookClubName,
-                        //StartDate = entity.ScheduleItem.StartDate,
-                        //EndDate = entity.ScheduleItem.EndDate,
                         StartDate = entity.StartDate,
                         EndDate = entity.EndDate,
                     };
