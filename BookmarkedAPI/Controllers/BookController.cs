@@ -50,13 +50,6 @@ namespace BookmarkedAPI.Controllers
             return Ok(book);
         }
 
-        public IHttpActionResult GetByAuthor(string author)
-        {
-            BookService bookService = CreateBookService();
-            var book = bookService.GetBookByAuthor(author);
-            return Ok(book);
-        }
-
         public IHttpActionResult Post(BookCreate book)
         {
             if (!ModelState.IsValid)

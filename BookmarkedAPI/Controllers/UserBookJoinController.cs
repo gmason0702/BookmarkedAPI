@@ -41,14 +41,6 @@ namespace BookmarkedAPI.Controllers
             return Ok(bookJoin);
         }
 
-        public IHttpActionResult GetAllUserRatings(string username)
-        {
-            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
-            var bookJoin = userBookJoinService.GetAllRatingsByUser(username);
-            return Ok(bookJoin);
-
-        }
-
         public IHttpActionResult GetAllUserRatings(string user)
         {
             UserBookJoinService userBookJoinService = CreateUserBookJoinService();
@@ -60,6 +52,13 @@ namespace BookmarkedAPI.Controllers
         {
             UserBookJoinService userBookJoinService = CreateUserBookJoinService();
             var bookJoin = userBookJoinService.GetUserBookDetailsByUserName(userName);
+            return Ok(bookJoin);
+        }
+
+        public IHttpActionResult GetDetailsByBookName(string bookName)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetUserBookDetailsByBookName(bookName);
             return Ok(bookJoin);
         }
 

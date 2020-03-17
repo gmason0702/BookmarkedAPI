@@ -118,24 +118,6 @@ namespace Bookmarked.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .BookClubs
-                        .Single(e => e.Name == name);
-                return
-                    new BookClubDetail
-                    {
-                        BookClubId = entity.BookClubId,
-                        Name = entity.Name,
-                        Description = entity.Description
-                    };
-            }
-
-        }
-        public bool UpdateBookClub(BookClubEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
 
                 var entity =
                     ctx
