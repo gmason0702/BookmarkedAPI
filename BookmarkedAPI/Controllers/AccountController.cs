@@ -426,7 +426,7 @@ namespace BookmarkedAPI.Controllers
             return null;
         }
 
-        private class ExternalLoginData
+        public class ExternalLoginData
         {
             public string LoginProvider { get; set; }
             public string ProviderKey { get; set; }
