@@ -215,7 +215,9 @@
     <Compile Include="Controllers\BookClubBookJoinController.cs" />
     <Compile Include="Controllers\BookClubController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BookScheduleItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\UserBookClubJoinController.cs" />
     <Compile Include="Controllers\UserBookJoinController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

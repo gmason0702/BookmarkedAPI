@@ -90,6 +90,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookClub.cs" />
     <Compile Include="BookClubBookJoin.cs" />
+    <Compile Include="BookScheduleItem.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202003051948544_SecondMigration.cs" />
     <Compile Include="Migrations\202003051948544_SecondMigration.Designer.cs">
@@ -143,8 +144,21 @@
     <Compile Include="Migrations\202003111835505_FixingDataBase.designer.cs">
       <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003170115182_AddedBookScheduleItemAndSchedule.cs" />
+    <Compile Include="Migrations\202003170115182_AddedBookScheduleItemAndSchedule.designer.cs">
+      <DependentUpon>202003170115182_AddedBookScheduleItemAndSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003170130335_FixedGaveBookClubBookId.cs" />
+    <Compile Include="Migrations\202003170130335_FixedGaveBookClubBookId.designer.cs">
+      <DependentUpon>202003170130335_FixedGaveBookClubBookId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003170158140_FixedBookClubDetailScheduledBookNameProperty.cs" />
+    <Compile Include="Migrations\202003170158140_FixedBookClubDetailScheduledBookNameProperty.designer.cs">
+      <DependentUpon>202003170158140_FixedBookClubDetailScheduledBookNameProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule.cs" />
     <Compile Include="UserBookClubJoin.cs" />
     <Compile Include="UserBookJoin.cs" />
   </ItemGroup>
@@ -191,6 +205,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003111835505_FixingDataBase.resx">
       <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003170115182_AddedBookScheduleItemAndSchedule.resx">
+      <DependentUpon>202003170115182_AddedBookScheduleItemAndSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003170130335_FixedGaveBookClubBookId.resx">
+      <DependentUpon>202003170130335_FixedGaveBookClubBookId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003170158140_FixedBookClubDetailScheduledBookNameProperty.resx">
+      <DependentUpon>202003170158140_FixedBookClubDetailScheduledBookNameProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
