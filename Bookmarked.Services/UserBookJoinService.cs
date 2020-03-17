@@ -145,6 +145,32 @@ namespace Bookmarked.Services
             }
         }
 
+
+        public IEnumerable<UserBookDetail> GetUserBookDetailsByBookName(string bookName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .UserBookJoins
+                    .Where(e => e.BookId == ctx.Books.FirstOrDefault(y => y.Name == bookName).Id)
+                    .Select(e => new UserBookDetail
+                    {
+                        Id = e.Id,
+                        ReaderId = e.ReaderId,
+                        FirstName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).FirstName,
+                        LastName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).LastName,
+                        UserName = ctx.Users.FirstOrDefault(x => x.Id == e.ReaderId).UserName,
+                        BookId = e.BookId,
+                        BookName = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Name,
+                        Author = ctx.Books.FirstOrDefault(x => x.Id == e.BookId).Author,
+                        Rating = e.Rating,
+                        Review = e.Review
+                    }
+                        );
+                return query.ToArray();
+            }
+        }
+
         public IEnumerable<UserBookDetail> GetAllUserBookDetails(int id)
         {
             using (var ctx = new ApplicationDbContext())
