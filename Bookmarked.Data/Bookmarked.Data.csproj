@@ -150,6 +150,7 @@
     <Compile Include="Migrations\202003121952399_AddBookToBookClub.cs" />
     <Compile Include="Migrations\202003121952399_AddBookToBookClub.designer.cs">
       <DependentUpon>202003121952399_AddBookToBookClub.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202003111835505_FixingDataBase.cs" />
     <Compile Include="Migrations\202003111835505_FixingDataBase.designer.cs">
       <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
@@ -241,6 +242,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003121952399_AddBookToBookClub.resx">
       <DependentUpon>202003121952399_AddBookToBookClub.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003111835505_FixingDataBase.resx">
       <DependentUpon>202003111835505_FixingDataBase.cs</DependentUpon>
     </EmbeddedResource>
