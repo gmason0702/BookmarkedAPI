@@ -9,6 +9,7 @@
 <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
 <p>
     @Html.ActionLink("Add new book", "Create")
+    @Html.ActionLink("Go to book club", "Index", "BookClubView", new { id = UrlParameter.Optional }, null)
   
 </p>
 <table class="table">

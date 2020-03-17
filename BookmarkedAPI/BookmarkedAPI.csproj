@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AccountViewController.cs" />
     <Compile Include="Controllers\BookClubBookJoinController.cs" />
     <Compile Include="Controllers\BookClubController.cs" />
+    <Compile Include="Controllers\BookClubViewController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BookDetailsViewController.cs" />
     <Compile Include="Controllers\BookViewController.cs" />
@@ -404,6 +405,7 @@
     <Content Include="Views\BookView\details.cshtml" />
     <Content Include="Views\BookDetailsView\index.cshtml" />
     <Content Include="Views\AccountView\login.cshtml" />
+    <Content Include="Views\BookClubView\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
