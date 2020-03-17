@@ -50,6 +50,13 @@ namespace BookmarkedAPI.Controllers
             return Ok(book);
         }
 
+        public IHttpActionResult GetByAuthor(string author)
+        {
+            BookService bookService = CreateBookService();
+            var book = bookService.GetBookByAuthor(author);
+            return Ok(book);
+        }
+
         public IHttpActionResult Post(BookCreate book)
         {
             if (!ModelState.IsValid)
@@ -68,40 +75,48 @@ namespace BookmarkedAPI.Controllers
             //    Genre = book.Genre
             //};
             //return CreatedAtRoute("DefaultApi", new { name = book.Name }, bookCreate);
-        
+
         }
 
-
-        public IHttpActionResult Put(BookEdit bookEdit)
+        public IHttpActionResult Put(BookEdit modelEdit)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateBookService();
 
-            if (!service.EditBook(bookEdit))
+            if (!service.EditBook(modelEdit))
                 return InternalServerError();
 
             return Ok();
         }
-        //public IHttpActionResult PutByValue(BookUpdate bookUpdate)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
+        public IHttpActionResult PutByValue(string propertyValue, string bookName, string newValue)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        //    var service = CreateBookService();
+            var service = CreateBookService();
 
-        //    if (!service.UpdateBook(bookUpdate))
-        //        return InternalServerError();
+            if (!service.UpdateBook(propertyValue,bookName,newValue))
+                return InternalServerError();
 
-        //    return Ok();
+            return Ok();
 
-        //}
+        }
+
 
         public IHttpActionResult Delete(int bookId)
         {
             var service = CreateBookService();
             if (!service.DeleteBook(bookId))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult DeleteByName(string bookName)
+        {
+            var service = CreateBookService();
+            if (!service.DeleteBookByName(bookName))
                 return InternalServerError();
 
             return Ok();
@@ -125,10 +140,7 @@ namespace BookmarkedAPI.Controllers
                 userId = Guid.Parse(User.Identity.GetUserId());
             }
             var bookService = new BookService(userId);
-            //return bookService;
-
-            //var userId = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            //var bookService = new BookService(userId);
+           
             return bookService;
         }
     }

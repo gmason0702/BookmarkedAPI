@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bookmarked.Data;
+using BookmarkedAPI.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +19,25 @@ namespace Bookmarked.Models
         public string BookName { get; set; }
         public string Author { get; set; }
         public int Rating { get; set; }
+        public string Review { get; set; }
+        private int _count;
+        //Eventually needs moved to user class -Alec
+        public int RatingCount
+        {
+            get
+            {
+                var ctx = new ApplicationDbContext();
+                _count = 0;
+                foreach (UserBookJoin join in ctx.UserBookJoins)
+                {
+                    if (join.ReaderId == ReaderId)
+                    {
+                        _count++;
+                    }
+                }
+                return _count;
+
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace Bookmarked.Data
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
 
     }
 }

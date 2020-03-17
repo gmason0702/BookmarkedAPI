@@ -49,6 +49,19 @@ namespace BookmarkedAPI.Controllers
 
         }
 
+        public IHttpActionResult GetAllUserRatings(string user)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetAllRatingsByUser(user);
+            return Ok(bookJoin);
+        }
+
+        public IHttpActionResult GetDetailsByUserName(string userName)
+        {
+            UserBookJoinService userBookJoinService = CreateUserBookJoinService();
+            var bookJoin = userBookJoinService.GetUserBookDetailsByUserName(userName);
+            return Ok(bookJoin);
+        }
 
         public IHttpActionResult Post(UserBookJoinCreate bookjoin)
         {

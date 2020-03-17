@@ -56,6 +56,28 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        //public ICollection<UserBookClubJoin> GetUsersByBookClub(BookClub bookClub)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .UserBookClubJoins
+        //                .Where(e => e.Club == bookClub)
+        //                .Select(
+        //                    e =>
+        //                        new BookClubDetail
+        //                        {
+        //                            ReaderList = e
+        //                            BookClubId = e.BookClubId,
+        //                            Name = e.Name,
+        //                            CreatedUtc = e.CreatedUtc
+        //                        }
+        //                );
+
+        //        return query.ToArray();
+        //    }
+        //}
         public BookClubDetail GetBookClubById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -75,6 +97,24 @@ namespace Bookmarked.Services
         }
 
         public BookClubDetail GetBookClubByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubs
+                    .Single(e => e.Name == name);
+                return
+                new BookClubDetail
+                {
+                    BookClubId = entity.BookClubId,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                };
+            };
+        }
+
+        public bool UpdateBookClub(BookClubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -103,6 +143,7 @@ namespace Bookmarked.Services
                     .Single(e => e.BookClubId == model.BookClubId);
                 entity.Name = model.Name;
                 entity.Description = model.Description;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
 
