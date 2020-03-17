@@ -12,13 +12,13 @@ Instructions:
 Resources Used:
 
 http://www.reza-aghaei.com/add-property-to-asp-net-identity-user/      
-https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-3  --  
-Eleven Fifty Academy Eleven Note API Walkthrough Modules  --  
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-3      
+Eleven Fifty Academy Eleven Note API Walkthrough Modules      
 Eleven Fifty Academy Instructional Team - Josh Tucker, Casey Wilson, Adam Wolanin
 
 Development Team:
 
-Alec Yancey https://github.com/Alecyancey  --  
-Andrea Kimball https://github.com/Andrea-Kimball  --  
-Gordon Mason https://github.com/gmason0702  --  
+Alec Yancey https://github.com/Alecyancey      
+Andrea Kimball https://github.com/Andrea-Kimball      
+Gordon Mason https://github.com/gmason0702      
 Nick Wehner https://github.com/nrwehner
