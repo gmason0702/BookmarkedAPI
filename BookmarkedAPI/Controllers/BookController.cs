@@ -13,11 +13,14 @@ namespace BookmarkedAPI.Controllers
     //[Authorize]
     public class BookController : ApiController
     {
+        
         public IHttpActionResult Get()
         {
+
             BookService bookService = CreateBookService();
             var books = bookService.GetBooks();
             return Ok(books);
+
         }
 
         public IHttpActionResult GetAll(int id)
@@ -68,32 +71,32 @@ namespace BookmarkedAPI.Controllers
 
         }
 
-        public IHttpActionResult Put(BookEdit bookEdit)
+        public IHttpActionResult Put(BookEdit modelEdit)
+        {
+            if (!ModelState.IsValid)
+
+                return BadRequest(ModelState);
+
+            var service = CreateBookService();
+
+            if (!service.EditBook(modelEdit))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult PutByValue(string propertyValue, string bookName, string newValue)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateBookService();
 
-            if (!service.EditBook(bookEdit))
+            if (!service.UpdateBook(propertyValue,bookName,newValue))
                 return InternalServerError();
 
             return Ok();
+
         }
-
-        //public IHttpActionResult PutByValue(BookUpdate bookUpdate)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
-
-        //    var service = CreateBookService();
-
-        //    if (!service.UpdateBook(bookUpdate))
-        //        return InternalServerError();
-
-        //    return Ok();
-
-        //}
 
 
         public IHttpActionResult Delete(int bookId)
@@ -104,12 +107,35 @@ namespace BookmarkedAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult DeleteByName(string bookName)
+        {
+            var service = CreateBookService();
+            if (!service.DeleteBookByName(bookName))
+                return InternalServerError();
+
+            return Ok();
+        }
 
         private BookService CreateBookService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            //var bookService = new BookService(userId);
+            //return bookService;
+
+            //var bookService = new BookService(Guid.NewGuid());
+            //return bookService;
+            Guid userId = new Guid();
+            if (!User.Identity.IsAuthenticated)
+            {
+                userId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            }
+            else
+            {
+                userId = Guid.Parse(User.Identity.GetUserId());
+            }
             var bookService = new BookService(userId);
             //var bookService = new BookService(Guid.NewGuid());
+           
             return bookService;
         }
     }

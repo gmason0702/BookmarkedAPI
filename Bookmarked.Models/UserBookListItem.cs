@@ -13,5 +13,6 @@ namespace Bookmarked.Models
         public string ReaderId { get; set; }
         public int BookId { get; set; }
         public int Rating { get; set; }
+        public string Review { get; set; }
     }
 }

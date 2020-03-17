@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
@@ -23,8 +24,11 @@ namespace BookmarkedAPI.Data
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         public virtual ICollection<UserBookJoin> UserBookJoins { get; set; }
         public virtual ICollection<UserBookClubJoin> ReaderList { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -33,7 +37,7 @@ namespace BookmarkedAPI.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

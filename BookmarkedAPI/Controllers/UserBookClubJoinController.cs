@@ -1,4 +1,5 @@
-﻿using Bookmarked.Models;
+﻿using Bookmarked.Data;
+using Bookmarked.Models;
 using Bookmarked.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -36,6 +37,12 @@ namespace BookmarkedAPI.Controllers
         {
             UserBookClubJoinService userBookClubService = CreateUserBookClubJoinService();
             var userBookClubJoin = userBookClubService.GetAllBookClubsOfUser(userName);
+            return Ok(userBookClubJoin);
+        }
+        public IHttpActionResult GetUsersByBookClub(string bookClubName)
+        {
+            UserBookClubJoinService userBookClubJoinService = CreateUserBookClubJoinService();
+            var userBookClubJoin = userBookClubJoinService.GetUsersByBookClub(bookClubName);
             return Ok(userBookClubJoin);
         }
         public IHttpActionResult Post(UserBookClubJoinCreate bookClubjoin)

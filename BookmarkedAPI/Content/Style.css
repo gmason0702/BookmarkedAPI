@@ -1,0 +1,48 @@
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60 );
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.body-content {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2rem 2rem 2rem 2rem;
+    border-radius: 25px;
+    
+}
+.form-group{
+    display: block;
+}
+
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: -5rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 3.8rem;
+    font-weight:800;
+    line-height: inherit;
+    white-space: nowrap;
+    padding-left:20rem;
+    text-transform:uppercase;
+    font-family: 'Times New Roman';
+}
+.navbar-brand .p {
+    padding-right: 3rem;
+}
+
+
+h2{
+    font-size:1rem;
+}
+
+img{
+    opacity: 0.5;
+}
+
+a{
+    color: midnightblue;
+}
