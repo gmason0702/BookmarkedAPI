@@ -43,6 +43,12 @@ namespace BookmarkedAPI.Controllers
             var book = bookService.GetBookByGenre(genre);
             return Ok(book);
         }
+        public IHttpActionResult GetByAuthor(string author)
+        {
+            BookService bookService = CreateBookService();
+            var book = bookService.GetBookByAuthor(author);
+            return Ok(book);
+        }
 
         public IHttpActionResult Post(BookCreate book)
         {
@@ -64,6 +70,7 @@ namespace BookmarkedAPI.Controllers
             //return CreatedAtRoute("DefaultApi", new { name = book.Name }, bookCreate);
         
         }
+
 
         public IHttpActionResult Put(BookEdit bookEdit)
         {
@@ -88,7 +95,7 @@ namespace BookmarkedAPI.Controllers
         //        return InternalServerError();
 
         //    return Ok();
-            
+
         //}
 
         public IHttpActionResult Delete(int bookId)
@@ -108,12 +115,20 @@ namespace BookmarkedAPI.Controllers
 
             //var bookService = new BookService(Guid.NewGuid());
             //return bookService;
-
-            //var bookService = new BookService(new Guid());
+            Guid userId = new Guid();
+            if (!User.Identity.IsAuthenticated)
+            {
+                userId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            }
+            else
+            {
+                userId = Guid.Parse(User.Identity.GetUserId());
+            }
+            var bookService = new BookService(userId);
             //return bookService;
 
-            var userId = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var bookService = new BookService(userId);
+            //var userId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            //var bookService = new BookService(userId);
             return bookService;
         }
     }

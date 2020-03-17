@@ -209,24 +209,24 @@ namespace Bookmarked.Services
 
         }
 
-        public bool UpdateBookGenre(string oldGenre, string newGenre)
-        {
-            var book = GetBookByName(oldGenre);
+        //public bool UpdateBookGenre(string oldGenre, string newGenre)
+        //{
+        //    var book = GetBookByName(oldGenre);
 
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Books
-                    .Single(e => e.Id == book.Id);
-                entity.Name = newGenre;
-                //entity.Author = book.Author;
-                //entity.Genre = book.Genre;
-                //entity.PublishedDate = book.PublishedDate;
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //            .Books
+        //            .Single(e => e.Id == book.Id);
+        //        entity.Name = newGenre;
+        //        //entity.Author = book.Author;
+        //        //entity.Genre = book.Genre;
+        //        //entity.PublishedDate = book.PublishedDate;
 
-                return ctx.SaveChanges() == 1;
-            }
-        }
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
         public bool DeleteBook(int bookId)
         {
             using (var ctx = new ApplicationDbContext())
