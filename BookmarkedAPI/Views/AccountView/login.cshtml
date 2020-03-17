@@ -8,7 +8,7 @@
 @*<h2>login</h2>*@
 <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
 <p>
-    @Html.ActionLink("Register new user", "AccountView", new { id = UrlParameter.Optional }, null)
+    @Html.ActionLink("Register new user", "Create", new { id = UrlParameter.Optional }, null)
 </p>
 
 
@@ -17,7 +17,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Welcome back, book lover!</h4>
+        <h3>Welcome back, book lover!</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -48,7 +48,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Login" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
 <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
 <p>
-    @Html.ActionLink("Add new book", "Create")
-    @Html.ActionLink("Go to book club", "Index", "BookClubView", new { id = UrlParameter.Optional }, null)
+    @Html.ActionLink("Add new book     |", "Create")
+    @Html.ActionLink("|     Go to book club", "Index", "BookClubView", new { id = UrlParameter.Optional }, null)
   
 </p>
 <table class="table">

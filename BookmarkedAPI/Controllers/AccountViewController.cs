@@ -30,6 +30,9 @@ namespace BookmarkedAPI.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44371/api/");
+                string token = DeserializeToken();
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 
                 var postTask = client.PostAsJsonAsync<RegisterBindingModel>("Account/Register", model);
                 postTask.Wait();
@@ -37,7 +40,7 @@ namespace BookmarkedAPI.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index", "BookView" );
+                    return RedirectToAction("login" );
                 }
             }
             ModelState.AddModelError(string.Empty, "Servor Error.");

@@ -41,6 +41,5 @@ namespace Bookmarked.Models
                 }
             }
         }
-        public ICollection<UserBookJoin> UserBookJoins { get; set; }
     }
 }

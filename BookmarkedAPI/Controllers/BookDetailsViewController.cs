@@ -13,82 +13,89 @@ namespace BookmarkedAPI.Controllers
     public class BookDetailsViewController : Controller
     {
 
-
-        //    public ActionResult Details(int id)
-        //    {
-        //        BookDetail bookDetail = null;
-        //        using (var client = new HttpClient())
-        //        {
-        //            client.BaseAddress = new Uri("https://localhost:44371/api/book");
-        //            var responseTask = client.PostAsJsonAsync("Book?id=" + id.ToString(), id);
-        //            responseTask.Wait();
-
-        //            var result = responseTask.Result;
-        //            if (result.IsSuccessStatusCode)
-        //            {
-        //                var readTask = result.Content.ReadAsAsync<BookDetail>();
-        //                readTask.Wait();
-
-        //                bookDetail = readTask.Result;
-        //            }
-        //        }
-        //        ModelState.AddModelError(string.Empty, "Servor error.");
-        //        return View(bookDetail);
-        //    }
-
-        //    // GET: BookDetails
-
-        //    public ActionResult Index(int id)
-        //    {
-        //        IEnumerable<BookDetail> bookDetail = null;
-
-        //        using (var client = new HttpClient())
-        //        {
-        //            client.BaseAddress = new Uri("https://localhost:44371/api/");
-        //            var responseTask = client.PostAsJsonAsync("Book?id=" + id.ToString(), id);
-        //            responseTask.Wait();
-
-        //            var result = responseTask.Result;
-        //            if (result.IsSuccessStatusCode)
-        //            {
-        //                var readTask = result.Content.ReadAsAsync<IList<BookDetail>>();
-        //                readTask.Wait();
-
-        //                bookDetail = readTask.Result;
-        //            }
-        //            else
-        //            {
-        //                bookDetail = Enumerable.Empty<BookDetail>();
-        //                ModelState.AddModelError(string.Empty, "Server Error.");
-        //            }
-        //        }
-        //        return View(bookDetail);
-        //    }
-        
-        public ActionResult Details(int id)
+        public ActionResult Index()
         {
-            BookDetail book = null;
+            IEnumerable<BookDetail> bookDetail = null;
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44371/api/");
                 string token = DeserializeToken();
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
+
+                var responseTask = client.GetAsync("Book");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<BookDetail>();
+                    var readTask = result.Content.ReadAsAsync<IList<BookDetail>>();
                     readTask.Wait();
 
-                    book = readTask.Result; 
-
+                    bookDetail = readTask.Result;
+                }
+                else
+                {
+                    bookDetail = Enumerable.Empty<BookDetail>();
+                    ModelState.AddModelError(string.Empty, "Server error.");
                 }
             }
+            return View(bookDetail);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(BookDetail book)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44371/api/Book");
+                string token = DeserializeToken();
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+
+                var postTask = client.PostAsJsonAsync<BookDetail>("book", book);
+                postTask.Wait();
+
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Servor Error.");
             return View(book);
         }
+        //public ActionResult Details(int id)
+        //{
+        //    BookDetail book = null;
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("https://localhost:44371/api/");
+        //        string token = DeserializeToken();
+        //        client.DefaultRequestHeaders.Clear();
+        //        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+        //        var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
+        //        var responseTask = client.GetAsync("Book");
+        //        responseTask.Wait();
+
+        //        var result = responseTask.Result;
+        //        if (result.IsSuccessStatusCode)
+        //        {
+        //            var readTask = result.Content.ReadAsAsync<BookDetail>();
+        //            readTask.Wait();
+
+        //            book = readTask.Result; 
+
+        //        }
+        //    }
+        //    return View(book);
+        //}
         //public ActionResult Details(BookDetail bookDetail)
         //{
         //    using (var client = new HttpClient())

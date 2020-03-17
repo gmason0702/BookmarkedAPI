@@ -49,10 +49,10 @@
    // }
 }
 
-    public partial class fixingaddmigrations : DbMigration
-    {
-        public override void Up()
-        {
+    //public partial class fixingaddmigrations : DbMigration
+   // {
+        //public override void Up()
+        //{
             //        CreateTable(
             //            "dbo.BookClubBookJoin",
             //            c => new
@@ -76,10 +76,10 @@
             //        AddColumn("dbo.UserBookJoin", "UserName", c => c.String());
             //        AddColumn("dbo.UserBookJoin", "OwnerId", c => c.Guid(nullable: false));
             //        AddColumn("dbo.UserBookJoin", "BookName", c => c.String());
-        }
+        //}
 
-        public override void Down()
-        {
+        //public override void Down()
+       // {
             //        DropForeignKey("dbo.BookClubBookJoin", "BookClubId", "dbo.BookClub");
             //        DropForeignKey("dbo.BookClubBookJoin", "BookId", "dbo.Book");
             //        DropIndex("dbo.BookClubBookJoin", new[] { "BookClubId" });
@@ -92,6 +92,6 @@
             //        DropColumn("dbo.UserBookClubJoin", "OwnerId");
             //        DropTable("dbo.BookClubBookJoin");
             //    }
-        }
-    }
-}
+       // }
+    //}
+//}

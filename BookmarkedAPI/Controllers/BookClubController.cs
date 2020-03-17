@@ -16,14 +16,14 @@ namespace BookmarkedAPI.Controllers
         public IHttpActionResult Get()
         {
             BookClubService bookClubService = CreateBookClubService();
-            var notes = bookClubService.GetBookClubs();
-            return Ok(notes);
+            var books = bookClubService.GetBookClubs();
+            return Ok(books);
         }
         public IHttpActionResult Get(int id)
         {
             BookClubService bookClubService = CreateBookClubService();
-            var note = bookClubService.GetBookClubById(id);
-            return Ok(note);
+            var book = bookClubService.GetBookClubById(id);
+            return Ok(book);
         }
         public IHttpActionResult Get(string name)
         {
