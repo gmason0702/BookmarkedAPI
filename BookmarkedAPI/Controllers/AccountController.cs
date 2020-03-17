@@ -343,6 +343,8 @@ namespace BookmarkedAPI.Controllers
                 return GetErrorResult(result);
             }
 
+            // then add newly registered user to "User" role 
+           await UserManager.AddToRoleAsync(user.Id, "user");
             return Ok();
         }
 
