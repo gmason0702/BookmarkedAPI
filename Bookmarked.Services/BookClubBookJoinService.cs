@@ -61,6 +61,27 @@ namespace Bookmarked.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<BookClubBookListItem> GetBookClubBookByBookClub(string bookClubName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .BookClubBookJoins
+                    .Where(e => e.BookClubName == bookClubName)
+                    .Select(e => new BookClubBookListItem
+                    {
+                        Id = e.Id,
+                        ScheduleName = e.ScheduleName,
+                        BookName = e.BookName,
+                        BookClubName = e.BookClubName,
+                        StartDate = e.StartDate,
+                        EndDate = e.EndDate,
+                    }
+
+                        );
+                return query.ToArray();
+            }
+        }
         public bool UpdateBookClubBookJoin(BookClubBookJoinEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -92,5 +113,18 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool DeleteBookClubBookJoin(int iD)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .BookClubBookJoins
+                    .Single(e => e.Id == iD);
+                ctx.BookClubBookJoins.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

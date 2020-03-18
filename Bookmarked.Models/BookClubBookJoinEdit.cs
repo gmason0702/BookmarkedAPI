@@ -9,7 +9,6 @@ namespace Bookmarked.Models
     public class BookClubBookJoinEdit
     {
         public string ScheduleName { get; set; }
-
         public string BookName { get; set; }
         public string BookClubName { get; set; }
         public DateTimeOffset StartDate { get; set; }
