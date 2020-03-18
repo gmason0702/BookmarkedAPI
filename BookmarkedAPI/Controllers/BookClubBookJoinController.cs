@@ -19,6 +19,13 @@ namespace BookmarkedAPI.Controllers
             return Ok(bookClubBookJoin);
         }
 
+        public IHttpActionResult GetByBookClub(string bookClubName)
+        {
+            BookClubBookJoinService bookClubBookJoinService = CreateBookClubBookJoinService();
+            var bookClubBookJoin = bookClubBookJoinService.GetBookClubBookByBookClub(bookClubName);
+            return Ok(bookClubBookJoin);
+        }
+
         public IHttpActionResult Post(BookClubBookJoinCreate bookClubBookJoin)
         {
             if (!ModelState.IsValid)
@@ -44,10 +51,20 @@ namespace BookmarkedAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Delete(int joinId)
+        public IHttpActionResult Delete(int iD)
         {
             var service = CreateBookClubBookJoinService();
-            if (!service.DeleteBookClubBookJoin(joinId))
+            if (!service.DeleteBookClubBookJoin(iD))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+
+        public IHttpActionResult Delete(string scheduleName)
+        {
+            var service = CreateBookClubBookJoinService();
+            if (!service.DeleteBookClubBookJoin(scheduleName))
                 return InternalServerError();
 
             return Ok();

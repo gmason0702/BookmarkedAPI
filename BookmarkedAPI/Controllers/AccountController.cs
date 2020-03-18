@@ -111,7 +111,6 @@ namespace BookmarkedAPI.Controllers
             {
 
                 Email = User.Identity.GetUserName(),
-                //Book = ctx.Users.Single(e=>e.UserBookJoins.
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
@@ -388,6 +387,8 @@ namespace BookmarkedAPI.Controllers
                 return GetErrorResult(result);
             }
 
+            // then add newly registered user to "User" role 
+           await UserManager.AddToRoleAsync(user.Id, "user");
             return Ok();
         }
 
@@ -471,7 +472,7 @@ namespace BookmarkedAPI.Controllers
             return null;
         }
 
-        private class ExternalLoginData
+        public class ExternalLoginData
         {
             public string LoginProvider { get; set; }
             public string ProviderKey { get; set; }

@@ -8,7 +8,11 @@ namespace Bookmarked.Models
 {
     public class BookClubBookListItem
     {
-        public int BookId { get; set; }
-        public int BookClubId { get; set; }
+        public int Id { get; set; }
+        public string ScheduleName { get; set; }
+        public string BookName { get; set; }
+        public string BookClubName { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset EndDate { get; set; }
     }
 }
