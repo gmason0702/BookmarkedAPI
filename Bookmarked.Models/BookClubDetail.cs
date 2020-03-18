@@ -23,17 +23,17 @@ namespace Bookmarked.Models
                     DateTimeOffset now = DateTimeOffset.Now;
                     foreach (BookClubBookJoin bCBJ in ctx.BookClubBookJoins)
                     {
-                        while (bCBJ.BookClubId == BookClubId)
+                        if (bCBJ.BookClubId == BookClubId)
                         {
                             if (bCBJ.StartDate <= now && now <= bCBJ.EndDate)
                             {
-                                string scheduledBookName = bCBJ.Book.Name;
+                                string scheduledBookName = bCBJ.BookName;
                                 return scheduledBookName;
                             }
                         }
                     }
-                    return null;
                 }
+                return null;
             }
         }
     }

@@ -101,14 +101,14 @@ namespace Bookmarked.Data.Migrations
 
             context.SaveChanges();
 
-            context.BookClubBookJoins.AddOrUpdate(x => x.BookClubId,
-            new BookClubBookJoin()
-            {
-                OwnerId = Guid.Parse(context.Users.Single(e => e.UserName == "SeedUser@email.com").Id),
-                BookId = context.Books.Single(e => e.Name == "The Great Gatsby").Id,
-                BookClubId = context.BookClubs.Single(e => e.Name == "Mystery Club").BookClubId,
-                BookClubName = "Seed Book Club"
-            });
+            //context.BookClubBookJoins.AddOrUpdate(x => x.BookClubId,
+            //new BookClubBookJoin()
+            //{
+            //    OwnerId = Guid.Parse(context.Users.Single(e => e.UserName == "SeedUser@email.com").Id),
+            //    BookId = context.Books.Single(e => e.Name == "The Great Gatsby").Id,
+            //    BookClubId = context.BookClubs.Single(e => e.Name == "Mystery Club").BookClubId,
+            //    BookClubName = "Seed Book Club"
+            //});
         }
     }
 }

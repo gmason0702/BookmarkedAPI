@@ -98,7 +98,7 @@ namespace BookmarkedAPI.Controllers
 
         }
 
-
+        [Authorize(Roles ="Admin")]
         public IHttpActionResult Delete(int bookId)
         {
             var service = CreateBookService();
