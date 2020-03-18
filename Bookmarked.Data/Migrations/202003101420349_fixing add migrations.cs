@@ -1,8 +1,13 @@
+﻿    using System;
+    using System.Data.Entity.Migrations;
+
 //﻿namespace Bookmarked.Data.Migrations
 //{
    //using System;
    // using System.Data.Entity.Migrations;
     
+//namespace Bookmarked.Data.Migrations
+//{
     //public partial class fixingaddmigrations : DbMigration
     //{
     //    public override void Up()
