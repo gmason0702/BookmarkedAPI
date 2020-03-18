@@ -74,7 +74,7 @@ namespace BookmarkedAPI.Controllers
 
 
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string name)
         {
             BookDetail book = null;
             using (var client = new HttpClient())
@@ -83,8 +83,8 @@ namespace BookmarkedAPI.Controllers
                 string token = DeserializeToken();
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
-                //var responseTask = client.GetAsync("Book");
+                //var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
+                var responseTask = client.GetAsync("Book?Name=" + name);
                 responseTask.Wait();
 
                 var result = responseTask.Result;

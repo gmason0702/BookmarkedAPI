@@ -5,10 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>details</h2>
+@*//<h2>details</h2>*@
+<link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+
 
 <div>
-    <h4>BookDetail</h4>
+    <h4>Book Detail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -55,5 +57,5 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", "BookView", new { id = Model.Id })*@
-    @Html.ActionLink("Back to List", "Index", "BookView",  new {id = UrlParameter.Optional}, null)
+    @Html.ActionLink("Back to List", "Index", "BookView", new { id = UrlParameter.Optional }, null)
 </p>
