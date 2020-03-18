@@ -1,12 +1,10 @@
-<<<<<<< HEAD
 ﻿    using System;
     using System.Data.Entity.Migrations;
-=======
+
 //﻿namespace Bookmarked.Data.Migrations
 //{
    //using System;
    // using System.Data.Entity.Migrations;
->>>>>>> 8c3eb28cb93faec2a63dcc34e24d46a60c5205aa
     
 //namespace Bookmarked.Data.Migrations
 //{
