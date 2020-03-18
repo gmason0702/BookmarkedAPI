@@ -12,8 +12,13 @@ Instructions:
 Resources Used:
 
 http://www.reza-aghaei.com/add-property-to-asp-net-identity-user/      
-https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-3    
-https://stackoverflow.com/questions/28595689/correct-way-to-seed-db-with-users-when-using-web-api-identity-and-tokens/28596759    
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-3   
+https://stackoverflow.com/questions/776781/using-html-actionlink-to-call-action-on-different-controller
+https://www.c-sharpcorner.com/article/passing-data-from-controller-to-view-using-session-part-five/
+https://www.tutorialsteacher.com/mvc/mvc-view
+https://stackoverflow.com/questions/28595689/correct-way-to-seed-db-with-users-when-using-web-api-identity-and-tokens/28596759
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/adding-a-view
+https://stackoverflow.com/questions/38661090/token-based-authentication-in-web-api-without-any-user-interface
 Eleven Fifty Academy Eleven Note API Walkthrough Modules      
 Eleven Fifty Academy Instructional Team - Josh Tucker, Casey Wilson, Adam Wolanin
 
