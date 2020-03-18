@@ -32,8 +32,8 @@ namespace Bookmarked.Models
                             }
                         }
                     }
-                    return null;
                 }
+                return null;
             }
         }
     }
