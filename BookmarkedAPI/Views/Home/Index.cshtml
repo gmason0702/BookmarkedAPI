@@ -1,73 +1,32 @@
-﻿@*@section scripts {
-    @Scripts.Render("~/bundles/app")
-}*@
+﻿
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var ulBooks = $('#ulBooks');
+@*<<div class="page-header">
+        <h1>Bookmarked</h1>
+    </div>
 
-            $('#btn').click(function () {
-                $.ajax({
-                    type: 'GET',
-                    url: 'api/Book',
-                    datatype: 'json',
-                    success: function (data) {
-                        ulBooks.empty();
-                        $.each(data, function (index, val) {
-                            var title = val.Name;
-                            ulBooks.Append('<li>' + title + '</li>')
-                        });
-                    }
-                });
-                $('#btnClear').click(function () {
-                    ulBooks.empty();
-                })
-            });
-        });
-    </script>
-</head>
-<body>
-    <input id="btn" type= "button" value="Books"/>
-    <input id="btnClear" type="button" value="Clear" />
-    <ul id="ulBooks"></ul>
-</body>
-</html>
-
-<!--<div class="page-header">
-    <h1>Bookmarked</h1>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">Book</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Book</h2>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled" data-bind="foreach: Book">
+                        <li>
+                            <strong><span data-bind="text: Author"></span></strong>: <span data-bind="text: Name"></span>
+                            <small><a href="#">Details</a></small>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="panel-body">
-                <ul class="list-unstyled" data-bind="foreach: Book">
-                    <li>
-                        <strong><span data-bind="text: Author"></span></strong>: <span data-bind="text: Name"></span>
-                        <small><a href="#">Details</a></small>
-                    </li>
-                </ul>
-            </div>
+            <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
         </div>
-        @*<div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>*@
-    </div>
+
+        <div class="col-md-4">
+            DETAILS
+        </div>
 
     <div class="col-md-4">
-        DETAILS
+        ADD NEW BOOK
     </div>
-
-<div class="col-md-4">
-    ADD NEW BOOK
-</div>
-</div>-->
-
-<!---->
+    </div>*@
