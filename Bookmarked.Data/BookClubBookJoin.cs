@@ -13,7 +13,10 @@ namespace Bookmarked.Data
         [Key]
         public int Id { get; set; }
         public Guid OwnerId { get; set; }//Should this be a Guid? I think Id is stored as a string in ApplicaitonUser 
-        //- so maybe this can be string too - it would need to be changed lots of places (Nick)
+                                         //- so maybe this can be string too - it would need to be changed lots of places (Nick)
+        public string ScheduleName { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset EndDate { get; set; }
         public int BookId { get; set; }
 
         [ForeignKey("BookId")]
