@@ -29,6 +29,9 @@ namespace Bookmarked.Services
                 BookId = bookId,
                 BookClubName = model.BookClubName,
                 BookName = model.BookName,
+                ScheduleName = model.ScheduleName,
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
                 CreatedUtc = DateTimeOffset.Now
             };
             using (ctx)
@@ -46,8 +49,12 @@ namespace Bookmarked.Services
                     .Where(e => e.OwnerId == _userId)
                     .Select(e => new BookClubBookListItem
                     {
-                        BookId = e.BookId,
-                        BookClubId = e.BookClubId
+                        Id = e.Id,
+                        ScheduleName = e.ScheduleName,
+                        BookName = e.BookName,
+                        BookClubName = e.BookClubName,
+                        StartDate = e.StartDate,
+                        EndDate = e.EndDate,
                     }
 
                         );
@@ -61,8 +68,10 @@ namespace Bookmarked.Services
                 var entity =
                     ctx
                     .BookClubBookJoins
-                    .Single(e => e.Id == model.JoinId);
+                    .Single(e => e.ScheduleName == model.ScheduleName);
                 entity.BookId= ctx.Books.FirstOrDefault(x => x.Name == model.BookName).Id;
+                entity.StartDate = model.StartDate;
+                entity.EndDate = model.EndDate;
                 entity.BookName = model.BookName;
                 entity.BookClubId= ctx.BookClubs.FirstOrDefault(x => x.Name == model.BookClubName).BookClubId;
                 entity.BookClubName = model.BookClubName;
@@ -71,14 +80,14 @@ namespace Bookmarked.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteBookClubBookJoin(int joinId)
+        public bool DeleteBookClubBookJoin(string scheduleName)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .BookClubBookJoins
-                    .Single(e => e.Id == joinId);
+                    .Single(e => e.ScheduleName == scheduleName);
                 ctx.BookClubBookJoins.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

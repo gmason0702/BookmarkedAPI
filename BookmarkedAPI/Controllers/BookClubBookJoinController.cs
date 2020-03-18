@@ -19,6 +19,7 @@ namespace BookmarkedAPI.Controllers
             return Ok(bookClubBookJoin);
         }
 
+
         public IHttpActionResult Post(BookClubBookJoinCreate bookClubBookJoin)
         {
             if (!ModelState.IsValid)
@@ -44,10 +45,10 @@ namespace BookmarkedAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Delete(int joinId)
+        public IHttpActionResult Delete(string scheduleName)
         {
             var service = CreateBookClubBookJoinService();
-            if (!service.DeleteBookClubBookJoin(joinId))
+            if (!service.DeleteBookClubBookJoin(scheduleName))
                 return InternalServerError();
 
             return Ok();

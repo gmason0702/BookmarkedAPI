@@ -183,6 +183,14 @@
     <Compile Include="Migrations\202003162015175_AppUserCreatedUtc.designer.cs">
       <DependentUpon>202003162015175_AppUserCreatedUtc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003180133092_AddedCurrentBookToBookClubModel.cs" />
+    <Compile Include="Migrations\202003180133092_AddedCurrentBookToBookClubModel.designer.cs">
+      <DependentUpon>202003180133092_AddedCurrentBookToBookClubModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003180141388_FixingBookClubBookJoin.cs" />
+    <Compile Include="Migrations\202003180141388_FixingBookClubBookJoin.designer.cs">
+      <DependentUpon>202003180141388_FixingBookClubBookJoin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />
@@ -262,6 +270,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003162015175_AppUserCreatedUtc.resx">
       <DependentUpon>202003162015175_AppUserCreatedUtc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003180133092_AddedCurrentBookToBookClubModel.resx">
+      <DependentUpon>202003180133092_AddedCurrentBookToBookClubModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003180141388_FixingBookClubBookJoin.resx">
+      <DependentUpon>202003180141388_FixingBookClubBookJoin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
