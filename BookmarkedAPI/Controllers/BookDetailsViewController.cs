@@ -71,31 +71,34 @@ namespace BookmarkedAPI.Controllers
             ModelState.AddModelError(string.Empty, "Servor Error.");
             return View(book);
         }
-        //public ActionResult Details(int id)
-        //{
-        //    BookDetail book = null;
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri("https://localhost:44371/api/");
-        //        string token = DeserializeToken();
-        //        client.DefaultRequestHeaders.Clear();
-        //        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-        //        var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
-        //        var responseTask = client.GetAsync("Book");
-        //        responseTask.Wait();
 
-        //        var result = responseTask.Result;
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            var readTask = result.Content.ReadAsAsync<BookDetail>();
-        //            readTask.Wait();
 
-        //            book = readTask.Result; 
 
-        //        }
-        //    }
-        //    return View(book);
-        //}
+        public ActionResult Details(int id)
+        {
+            BookDetail book = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44371/api/");
+                string token = DeserializeToken();
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                var responseTask = client.PostAsJsonAsync("Book?Id=" + id.ToString(), id);
+                //var responseTask = client.GetAsync("Book");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<BookDetail>();
+                    readTask.Wait();
+
+                    book = readTask.Result;
+
+                }
+            }
+            return View(book);
+        }
         //public ActionResult Details(BookDetail bookDetail)
         //{
         //    using (var client = new HttpClient())

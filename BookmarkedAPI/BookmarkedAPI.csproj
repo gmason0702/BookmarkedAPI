@@ -417,6 +417,7 @@
     <Content Include="Views\BookDetailsView\index.cshtml" />
     <Content Include="Views\AccountView\login.cshtml" />
     <Content Include="Views\BookClubView\index.cshtml" />
+    <Content Include="Views\BookDetailsView\details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
